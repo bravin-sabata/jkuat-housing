@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Hub - Student Services</title>
+    <title>Hometouch - Community Hub Services</title>
     <style>
-        /* Base Styles matching the Community Hub Brand Identity */
         :root {
-            --primary-navy: #0F2942;
-            --accent-gold: #FAB818;
-            --light-bg: #F4F7FA;
-            --text-dark: #333333;
+            --bg-dark: #07162c;
+            --card-blue: #0b2240;
+            --accent-gold: #f2ae43;
+            --text-light: #ffffff;
+            --text-muted: #a0aec0;
         }
 
         * {
@@ -21,157 +21,466 @@
         }
 
         body {
-            background-color: var(--light-bg);
-            color: var(--text-dark);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
             line-height: 1.6;
+            padding-bottom: 40px;
         }
 
-        header {
-            background-color: var(--primary-navy);
-            color: white;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 5px solid var(--accent-gold);
+        /* Navbar Styling */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background-color: rgba(7, 22, 44, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
-        /* Logo Styling */
-        .logo-container {
-            margin-bottom: 15px;
+        .nav-logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .brand-logo {
-            width: 120px; /* Adjust size if needed */
-            height: 120px;
-            border-radius: 50%; /* Keeps it perfectly circular */
-            border: 3px solid white;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        .nav-logo-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
             object-fit: cover;
         }
 
-        header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 5px;
-            letter-spacing: 0.5px;
-        }
-
-        header p {
-            color: var(--accent-gold);
-            font-weight: 600;
+        .nav-brand-text h1 {
+            font-size: 1.2rem;
             letter-spacing: 1px;
-            font-size: 0.95rem;
         }
 
-        main {
-            max-width: 1000px;
-            margin: 40px auto;
-            padding: 20px;
+        .nav-brand-text p {
+            font-size: 0.65rem;
+            color: var(--accent-gold);
+            font-weight: bold;
         }
 
-        .hero {
-            background: white;
-            padding: 40px;
-            border-radius: 12px;
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--accent-gold);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        /* Central Logo Presentation */
+        .hero-logo-container {
+            margin: 40px auto 20px auto;
+            width: 130px;
+            height: 130px;
+        }
+
+        .center-brand-logo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Text */
+        .hero-title {
+            font-size: 3rem;
+            letter-spacing: 3px;
+            font-weight: 400;
+            margin-bottom: 5px;
+        }
+
+        .hero-subtitle {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            letter-spacing: 2px;
             margin-bottom: 30px;
         }
 
-        .hero h2 {
-            color: var(--primary-navy);
+        /* Welcome Dashboard Card */
+        .welcome-card {
+            background-color: var(--card-blue);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .welcome-card h2 {
+            font-size: 1.4rem;
+            letter-spacing: 1px;
             margin-bottom: 15px;
         }
 
+        .welcome-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 650px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-gold);
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #df9b32;
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--text-light);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+
+        /* Services Grid */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 60px;
         }
 
-        .service-card {
-            background: white;
-            padding: 25px;
+        .service-box {
+            background-color: var(--card-blue);
             border-radius: 10px;
-            border-top: 4px solid var(--primary-navy);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
-            transition: transform 0.2s ease;
+            padding: 30px 25px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.03);
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-top-color: var(--accent-gold);
+        .service-icon {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            display: block;
         }
 
-        .service-card h3 {
-            color: var(--primary-navy);
+        .service-box h3 {
+            font-size: 1.1rem;
             margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #777;
+        .service-box p {
+            color: var(--text-muted);
             font-size: 0.9rem;
-            margin-top: 60px;
+            line-height: 1.5;
         }
 
-        /* Responsive Tweaks */
+        /* Formspree Contact Card */
+        .contact-card {
+            background-color: var(--card-blue);
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto 60px auto;
+            text-align: center;
+        }
+
+        .contact-card h2 {
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .contact-card > p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            margin-bottom: 30px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .form-group-full {
+            grid-column: span 2;
+            text-align: left;
+        }
+
+        .form-grid label, .form-group-full label {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        .form-grid input, .form-group-full textarea {
+            width: 100%;
+            background-color: var(--bg-dark);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 6px;
+            padding: 12px;
+            color: white;
+            font-size: 0.9rem;
+            outline: none;
+        }
+
+        .form-grid input:focus, .form-group-full textarea:focus {
+            border-color: var(--accent-gold);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background-color: var(--accent-gold);
+            color: #000;
+            border: none;
+            padding: 14px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            margin-bottom: 25px;
+        }
+
+        .submit-btn:hover {
+            background-color: #df9b32;
+        }
+
+        .urgent-notice {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .phone-direct-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn-phone {
+            background-color: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: var(--text-light);
+            font-size: 0.8rem;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+        }
+
+        /* Footer Element */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 40px 8% 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            text-align: left;
+        }
+
+        .footer-left h4 {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .footer-left p {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        .footer-right p {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            text-align: right;
+            margin-bottom: 5px;
+        }
+
+        .copyright-bar {
+            text-align: center;
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.2);
+            margin-top: 30px;
+        }
+
+        /* Responsive Flow */
         @media (max-width: 768px) {
-            main { margin: 20px auto; }
-            .hero { padding: 25px; }
-            .brand-logo { width: 100px; height: 100px; }
+            nav { flex-direction: column; gap: 15px; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group-full { grid-column: span 1; }
+            footer { flex-direction: column; gap: 25px; text-align: center; }
+            .footer-right p { text-align: center; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <img src="logo.png" alt="Community Hub Logo" class="brand-logo">
+    <nav>
+        <div class="nav-logo-area">
+            <img src="logo.png" alt="Hometouch Mini Logo" class="nav-logo-img">
+            <div class="nav-brand-text">
+                <h1>HOMETOUCH</h1>
+                <p>COMMUNITY HUB SERVICES</p>
+            </div>
         </div>
-        <h1>COMMUNITY HUB</h1>
-        <p>VERIFIED DEALS • JKUAT ESTATE WATCH</p>
-    </header>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Storage</a></li>
+            <li><a href="#">Laundry</a></li>
+            <li><a href="#">Accommodation</a></li>
+            <li><a href="#">Marketplace</a></li>
+        </ul>
+    </nav>
 
-    <main>
-        <section class="hero">
-            <h2>Premium Student Services in Juja</h2>
-            <p>We make campus living seamless. From secure vacation storage to doorstep laundry and verified housing near JKUAT, we've got you sorted. Click the voice agent button below to speak with our AI assistant instantly!</p>
+    <div class="container">
+        
+        <div class="hero-logo-container">
+            <img src="logo.png" alt="Community Hub Logo" class="center-brand-logo">
+        </div>
+
+        <h1 class="hero-title">HOMETOUCH</h1>
+        <p class="hero-subtitle">JKUAT COMMUNITY HUB • SIMPLE • SAFE • CONVENIENT</p>
+
+        <section class="welcome-card">
+            <h2>YOUR ONE-STOP STUDENT SERVICES IN JUJA</h2>
+            <p>Simple solutions for simple living. We handle where it pains so you can rest easy. Student-centered, integrity-driven, and committed to excellence.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn btn-primary">EXPLORE STORAGE</a>
+                <a href="tel:0726745563" class="btn btn-secondary">URGENT CALL</a>
+            </div>
         </section>
 
         <section class="services-grid">
-            <div class="service-card">
-                <h3>📦 Secure Storage</h3>
-                <p>Safe, pest-free storage for your holiday recess. Store beds, mattresses, and bags securely starting from Ksh 1,450/month.</p>
+            <div class="service-box">
+                <span class="service-icon">📦</span>
+                <h3>STORAGE SERVICES</h3>
+                <p>Safe and secure storage for your belongings. Perfect for students during holidays, attachments, or academic leave. From as low as Ksh 1,450/- per month.</p>
             </div>
-            <div class="service-card">
-                <h3>🧺 Doorstep Laundry</h3>
-                <p>Premium washing and care at Ksh 50 per KG. Heavy duvets handled from Ksh 300 with seamless pick-up and delivery.</p>
+            <div class="service-box">
+                <span class="service-icon">🎽</span>
+                <h3>LAUNDRY SERVICES</h3>
+                <p>Professional laundry at competitive prices. General laundry at 50/- per Kg, duvets from 300/-. Pick up and delivery available.</p>
             </div>
-            <div class="service-card">
-                <h3>🏠 Accommodation Finder</h3>
-                <p>Skip the broker drama. Discover verified, high-quality bedsitters and 1-bedroom apartments around Gate B, Gachororo, and Oasis.</p>
+            <div class="service-box">
+                <span class="service-icon">🏠</span>
+                <h3>ACCOMMODATION FINDER</h3>
+                <p>Find verified bedsitter complexes and student housing options localized across JKUAT sectors seamlessly without broker hassles.</p>
             </div>
         </section>
-    </main>
+
+        <section class="contact-card">
+            <h2>GET IN TOUCH</h2>
+            <p>Have questions? Send us a message and your request drops straight into our booking basket loop.</p>
+            
+            <form action="https://formspree.io/f/xvggpzee" method="POST">
+                <div class="form-grid">
+                    <div>
+                        <label>YOUR NAME *</label>
+                        <input type="text" name="name" placeholder="Name" required>
+                    </div>
+                    <div>
+                        <label>EMAIL ADDRESS *</label>
+                        <input type="email" name="email" placeholder="name@domain.com" required>
+                    </div>
+                </div>
+                <div class="form-group-full" style="margin-bottom: 25px;">
+                    <label>PHONE NUMBER *</label>
+                    <input type="text" name="phone" placeholder="07xxxxxxxx" required>
+                </div>
+                <div class="form-group-full" style="margin-bottom: 25px;">
+                    <label>YOUR MESSAGE REQUIREMENTS *</label>
+                    <textarea name="requirements" rows="4" placeholder="Describe what you need or items you wish to store..." required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">SEND MESSAGE</button>
+            </form>
+
+            <div class="urgent-notice">🚨 Extremely Urgent Booking? Call Peter Wabwire directly:</div>
+            <div class="phone-direct-buttons">
+                <a href="tel:0726745563" class="btn-phone">📞 Peter Wabwire (Line 1)</a>
+                <a href="tel:0704580886" class="btn-phone">📞 Support Line 2</a>
+            </div>
+        </section>
+
+    </div>
 
     <footer>
-        &copy; 2026 Community Hub Student Services. All Rights Reserved.
+        <div class="footer-left">
+            <h4>HOMETOUCH</h4>
+            <p>Your trusted partner for student services at JKUAT.</p>
+        </div>
+        <div class="footer-right">
+            <p>📍 Juja, Kiambu County, Kenya</p>
+            <p>📞 Primary: 0726 745 563 (Peter Wabwire)</p>
+            <p>📞 Secondary: 0704 580 886</p>
+            <p>✉️ info@juja.co.ke</p>
+        </div>
     </footer>
 
+    <div class="copyright-bar">
+        &copy; 2026 Hometouch Student Services. All rights reserved. | Compliant with Kenya Data Protection Act (2019) & GDPR
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@1/dist/vapi-sdk.js"></script>
-
     <script>
-      // REPLACE 'YOUR_PUBLIC_KEY' with the key from your Vapi Account/Settings tab
-      const vapi = new Vapi("YOUR_PUBLIC_KEY");
+      // Insert your live Vapi Public Key right here inside the quotes
+      const vapi = new Vapi("YOUR_PUBLIC_KEY_HERE");
 
-      // This generates the floating telephone call button on the screen
       vapi.createButton({
-        assistant: "5dc578e9-e1d5-4182-b2bc-ecb03f863b84", // Your Assistant ID from the dashboard
+        assistant: "5dc578e9-e1d5-4182-b2bc-ecb03f863b84",
         config: {
           position: "bottom-right",
           title: "Call Assistant",
           subtitle: "Community Hub AI",
-          color: "#0F2942", // Matches your deep navy blue branding
+          color: "#f2ae43", // Beautiful matching gold button to stand out cleanly!
         },
       });
     </script>
