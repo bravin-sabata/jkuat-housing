@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Hometouch Students Services - JKUAT Portal</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@3/dist/vapi.js"></script>
     <style>
         ::-webkit-scrollbar { width: 6px; }
         ::-webkit-scrollbar-track { background: #071120; }
@@ -19,7 +20,7 @@
         }
     </style>
 </head>
-<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden">
+<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden relative">
 
     <header class="bg-[#0d1e36]/95 backdrop-blur-md border-b border-[#e5a93b]/20 sticky top-0 z-50 w-full">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
@@ -56,26 +57,46 @@
                     <p class="text-xs text-gray-300 leading-relaxed max-w-xl mx-auto font-medium">
                         Simple solutions for simple living. We handle where it pains so you can rest easy. Student-centered, integrity-driven, and committed to excellence.
                     </p>
-                    <div class="mt-6 flex justify-center gap-3">
+                    <div class="mt-6 flex flex-wrap justify-center gap-3">
                         <button onclick="switchTab('storage', document.getElementsByClassName('tab-btn')[1])" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider cursor-pointer">Explore Storage</button>
-                        <a href="tel:+254726745563" class="bg-[#163056] border border-[#e5a93b]/20 hover:border-[#e5a93b]/40 text-white font-bold text-xs px-5 py-2.5 rounded transition uppercase tracking-wider flex items-center justify-center">Urgent Call</a>
+                        <button onclick="toggleVapiCall()" class="bg-green-600 hover:bg-green-700 text-white font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider flex items-center gap-2 cursor-pointer">
+                            <span class="relative flex h-2 w-2">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
+                            </span>
+                            Speak to AI Agent
+                        </button>
                     </div>
                 </div>
             </section>
 
             <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-5xl mx-auto">
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm">
-                    <span class="text-[#e5a93b] text-xl block mb-2">📦</span>
+                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm flex flex-col items-start">
+                    <div class="text-[#e5a93b] mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                        </svg>
+                    </div>
                     <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Storage Services</h3>
                     <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Safe and secure storage for your belongings. Perfect for students during holidays, attachments, or academic leave. From as low as Ksh 1,450/- per month.</p>
                 </div>
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm">
-                    <span class="text-[#e5a93b] text-xl block mb-2">👕</span>
+
+                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm flex flex-col items-start">
+                    <div class="text-[#e5a93b] mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21m0 0l-.813-5.096M9 21h3.375c.621 0 1.125-.504 1.125-1.125V18M14.25 15.904L15 21m0 0l.813-5.096M15 21H11.625M12 3v1.5m0 9V15m0-9a3 3 0 110 6 3 3 0 010-6zM3.75 6h.008v.008H3.75V6zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 9h.008v.008H3.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                        </svg>
+                    </div>
                     <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Laundry Services</h3>
                     <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Professional laundry at competitive prices. General laundry at 50/- per Kg, duvets from 300/-. Pick up and delivery available.</p>
                 </div>
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm">
-                    <span class="text-[#e5a93b] text-xl block mb-2">🏠</span>
+
+                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm flex flex-col items-start">
+                    <div class="text-[#e5a93b] mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                        </svg>
+                    </div>
                     <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Accommodation Finder</h3>
                     <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Find verified bedsitter complexes and student housing options localized across JKUAT sectors seamlessly without broker hassles.</p>
                 </div>
@@ -95,7 +116,7 @@
                             <li>✅ Cleaning and wrapping services available on site</li>
                         </ul>
                     </div>
-                    <div class="bg-linear-to-br from-[#e5a93b]/15 to-[#0d1e36] border border-[#e5a93b]/20 rounded-xl p-4 shadow-md">
+                    <div class="bg-gradient-to-br from-[#e5a93b]/15 to-[#0d1e36] border border-[#e5a93b]/20 rounded-xl p-4 shadow-md">
                         <p class="text-[10px] font-bold text-[#e5a93b] uppercase tracking-wider">Special Offer</p>
                         <p class="text-sm font-bold text-white mt-0.5">From Ksh 1,450/-</p>
                         <p class="text-[11px] text-gray-400 mt-1 leading-normal">Discounted rate per month (Bed, Mattress, Desk, Chair, Travel Bag) for early bird booking.</p>
@@ -237,7 +258,11 @@
 
         <div id="marketplace-tab" class="tab-content">
             <div class="max-w-sm mx-auto text-center bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-6 shadow-xl">
-                <div class="text-[#e5a93b] text-2xl mb-1">🛒</div>
+                <div class="text-[#e5a93b] text-2xl mb-1">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 mx-auto">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-16.5-3zM12.25 15.75a3 3 0 11-6 0 3 3 0 016 0zm6.375 0a3 3 0 11-6 0 3 3 0 016 0zM3.75 6h16.5a1.5 1.5 0 011.5 1.5v2.25a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V7.5A1.5 1.5 0 013.75 6z" />
+                    </svg>
+                </div>
                 <h3 class="text-xs font-bold text-white uppercase tracking-wider">Peer-to-Peer Market</h3>
                 <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">Direct secure student asset trading module opens soon.</p>
             </div>
@@ -289,6 +314,22 @@
             </div>
         </div>
     </section>
+
+    <div class="fixed bottom-6 right-6 z-50">
+        <button id="vapi-widget-btn" onclick="toggleVapiCall()" class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
+            
+            <svg id="vapi-icon-idle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.433-5.147-3.756-6.58-6.58l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            
+            <svg id="vapi-icon-active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 hidden text-red-600">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+            
+            <span class="absolute right-16 bg-[#11233d] border border-[#e5a93b]/20 text-[#e5a93b] font-bold text-[10px] uppercase px-2 py-1 rounded tracking-wider shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">Ask Assistant</span>
+        </button>
+    </div>
 
     <footer class="bg-[#071120] border-t border-[#e5a93b]/10 py-6 px-4 text-[9px] text-gray-500 mt-auto w-full">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
@@ -418,7 +459,7 @@
                             <p class="text-[9px] text-gray-400 font-semibold uppercase tracking-wider mb-2">Need immediate real-time response?</p>
                             <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
                                 <a href="tel:+254726745563" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Peter</a>
-                                <a href="tel:+254704580886" class="bg-[#163056] border border-[#e5a93b]/10 hover:bg-[#11233d] text-white font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Support</a>
+                                <a href="tel:+254704580886" class="bg-[#163056] border border-[#e5a93b]/10 hover:border-[#11233d] text-white font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Support</a>
                             </div>
                         </div>
                         <button onclick="window.location.reload()" class="mt-4 text-[10px] text-gray-400 hover:text-[#e5a93b] underline transition cursor-pointer">Submit another entry</button>
@@ -426,6 +467,53 @@
             }).catch(() => {
                 container.innerHTML = `<div class="bg-[#11233d] border border-red-500/20 rounded-xl p-6 text-center text-xs text-red-400">Submission error. Please verify endpoints.</div>`;
             });
+        }
+
+        // ==========================================
+        //         VAPI VOICE ASSISTANT SYSTEM
+        // ==========================================
+        let vapiInstance = null;
+        let isCallActive = false;
+
+        // Initialize Vapi Instance with Credentials
+        function initVapi() {
+            if (!vapiInstance) {
+                // Instantiates Vapi global client with Public Key
+                vapiInstance = new Vapi('5a617761-1775-4bee-8224-aae05aa32cfa');
+
+                // Toggle icon and states based on engine streaming signals
+                vapiInstance.on('call-start', () => {
+                    isCallActive = true;
+                    document.getElementById('vapi-icon-idle').classList.add('hidden');
+                    document.getElementById('vapi-icon-active').classList.remove('hidden');
+                    document.getElementById('vapi-widget-btn').classList.remove('bg-[#e5a93b]', 'hover:bg-[#cca325]');
+                    document.getElementById('vapi-widget-btn').classList.add('bg-white');
+                });
+
+                vapiInstance.on('call-end', () => {
+                    isCallActive = false;
+                    document.getElementById('vapi-icon-active').classList.add('hidden');
+                    document.getElementById('vapi-icon-idle').classList.remove('hidden');
+                    document.getElementById('vapi-widget-btn').classList.remove('bg-white');
+                    document.getElementById('vapi-widget-btn').classList.add('bg-[#e5a93b]', 'hover:bg-[#cca325]');
+                });
+
+                vapiInstance.on('error', (e) => {
+                    console.error('Vapi Web SDK Stream Interface Error:', e);
+                    isCallActive = false;
+                });
+            }
+        }
+
+        // Execution router to run or drop stream connections cleanly
+        function toggleVapiCall() {
+            initVapi();
+            if (isCallActive) {
+                vapiInstance.stop();
+            } else {
+                // Dispatches voice capture request thread to specified assistant instance ID
+                vapiInstance.start('5dc578e9-e1d5-4182-b2bc-ecb03f863b84');
+            }
         }
     </script>
 </body>
