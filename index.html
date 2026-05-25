@@ -3,128 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JKUAT Student Housing & Storage Portal</title>
+    <title>Hometouch Students Services - JKUAT Portal</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Custom scrollbar to match the sleek dark theme */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #ea580c; border-radius: 3px; }
+    </style>
 </head>
-<body class="bg-gray-50 flex flex-col min-h-screen font-sans">
+<body class="bg-[#0b0f19] text-gray-200 flex flex-col min-h-screen font-sans antialiased">
 
-    <header class="bg-white border-b border-gray-200 py-6 px-8 max-w-6xl w-full mx-auto flex items-center gap-4">
-        <div class="bg-green-700 text-white font-bold text-xl px-4 py-2 rounded">
-            JKUAT
-        </div>
-        <div>
-            <h1 class="text-2xl font-bold tracking-tight text-gray-900">Off-Campus Student Housing</h1>
-            <p class="text-sm text-gray-500 font-medium">Storage & Accommodation Finder</p>
+    <header class="bg-[#0f172a]/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50 transition-all">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="bg-orange-600 p-2 rounded-lg text-white shadow-md shadow-orange-600/20">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                </div>
+                <div>
+                    <span class="text-sm font-black tracking-wider text-white uppercase block">HOMETOUCH</span>
+                    <span class="text-[10px] tracking-widest text-orange-500 block uppercase -mt-1">Students Services</span>
+                </div>
+            </div>
+            <nav class="hidden md:flex items-center gap-1 text-xs font-semibold text-gray-400">
+                <a href="#" class="px-3 py-2 text-white bg-orange-600/10 rounded-md border-b-2 border-orange-500">Storage</a>
+                <a href="#" class="px-3 py-2 hover:text-white transition">Laundry</a>
+                <a href="#" class="px-3 py-2 hover:text-white transition">Accommodation</a>
+                <a href="#" class="px-3 py-2 hover:text-white transition">Marketplace</a>
+            </nav>
         </div>
     </header>
 
-    <nav class="bg-amber-500 max-w-6xl w-full mx-auto px-8 flex justify-between items-center text-white font-semibold">
-        <div class="flex">
-            <a href="#" class="py-3 px-4 bg-amber-600 border-b-4 border-amber-800">Find Room/Storage</a>
-            <a href="#" class="py-3 px-4 hover:bg-amber-600 transition">List Your Property</a>
-        </div>
-        <a href="#" class="py-3 px-4 hover:underline text-sm">Help & Support</a>
-    </nav>
+    <section class="max-w-4xl mx-auto text-center pt-12 pb-6 px-4">
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2 uppercase">Storage Services</h1>
+        <p class="text-sm text-gray-400 max-w-md mx-auto font-medium">Safe, secure, and affordable storage solutions for JKUAT students.</p>
+    </section>
 
-    <main class="max-w-6xl w-full mx-auto bg-white p-8 border-x border-b border-gray-200 flex-grow shadow-sm">
+    <main class="max-w-6xl w-full mx-auto px-6 grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
         
-        <div class="bg-amber-50 border-l-4 border-amber-500 p-4 mb-6">
-            <h3 class="font-bold text-amber-800 uppercase tracking-wider text-xs">Important Notice</h3>
-            <p class="text-sm text-amber-900 mt-1">
-                Semester bookings for May-August 2026 are filling up fast around Gate B and Gachororo. Secure your holiday box storage early!
-            </p>
+        <div class="lg:col-span-5 flex flex-col gap-6">
+            <div class="bg-[#111827] border border-gray-800 rounded-xl p-6 shadow-xl">
+                <h3 class="text-base font-bold text-white mb-4 border-b border-gray-800 pb-2">Why Choose Our Storage?</h3>
+                <ul class="space-y-3 text-xs text-gray-400 font-medium">
+                    <li class="flex items-start gap-2 text-green-400">✅ <span class="text-gray-300">Safe and secure storage facilities</span></li>
+                    <li class="flex items-start gap-2 text-green-400">✅ <span class="text-gray-300">Organization that ensures items are returned as left</span></li>
+                    <li class="flex items-start gap-2 text-green-400">✅ <span class="text-gray-300">Transport arrangements available</span></li>
+                    <li class="flex items-start gap-2 text-green-400">✅ <span class="text-gray-300">Pest-free environment</span></li>
+                    <li class="flex items-start gap-2 text-green-400">✅ <span class="text-gray-300">Cleaning and wrapping services available on site</span></li>
+                </ul>
+            </div>
+
+            <div class="bg-linear-to-br from-amber-600/20 to-orange-600/10 border border-orange-500/30 rounded-xl p-6 shadow-lg relative overflow-hidden">
+                <span class="absolute top-0 right-0 bg-orange-600 text-[10px] font-extrabold text-white px-3 py-1 rounded-bl-lg tracking-wider uppercase">Special Offer</span>
+                <p class="text-xs font-semibold text-orange-400">From Ksh 1,450/-</p>
+                <p class="text-sm font-bold text-white mt-1">Discounted combo package rate per month</p>
+                <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Includes Bed, Mattress, Desk, Chair, and 1 Travel Bag for early bird bookings. Items need to be cleaned and properly wrapped before storage.</p>
+            </div>
         </div>
 
-        <h2 class="text-xl font-bold text-gray-800 mb-2">Available Student Spaces</h2>
-        <p class="text-sm text-gray-600 mb-6">Filter by your preferred location near JKUAT and pay KES 10 to instantly unlock the landlord/caretaker contacts.</p>
-
-        <div class="border border-gray-200 rounded-lg overflow-hidden max-w-xl bg-white shadow-xs">
-            <div class="p-5">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Bedsitter Available</span>
-                        <h3 class="font-bold text-lg text-gray-900 mt-2">Executive Bedsitter (Water 24/7)</h3>
-                        <p class="text-sm text-gray-500">Location: Gate B (Near Sunrise)</p>
-                    </div>
-                    <span class="text-lg font-extrabold text-green-700">KES 8,500/mo</span>
+        <div class="lg:col-span-7 bg-[#111827] border border-gray-800 rounded-xl p-6 shadow-xl flex flex-col">
+            <div class="flex items-center gap-2 mb-4 border-b border-gray-800 pb-3">
+                <div class="bg-orange-600/20 text-orange-500 p-1.5 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
                 </div>
-                
-                <p class="text-sm text-gray-600 mt-3 border-t border-dashed border-gray-100 pt-3">
-                    Includes token electricity, secure biometric gate, free Wi-Fi, and a rooftop hanging line.
-                </p>
+                <div>
+                    <h3 class="text-sm font-bold text-white">Cost Estimator</h3>
+                    <p class="text-[10px] text-gray-500">Calculate your monthly storage cost</p>
+                </div>
+            </div>
 
-                <div class="mt-5" id="action-area">
-                    <button onclick="openPaymentModal()" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-bold py-2.5 px-4 rounded transition shadow-sm cursor-pointer text-center text-sm">
-                        Unlock Landlord Contact (KES 10)
-                    </button>
+            <div class="space-y-3 flex-grow overflow-y-auto max-h-[260px] pr-2">
+                <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-200">Bed Frame</h4>
+                        <p class="text-[10px] text-gray-500">Ksh 150/mo</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="updateQty('bed', -1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">-</button>
+                        <span id="qty-bed" class="text-xs font-bold text-white w-4 text-center">0</span>
+                        <button onclick="updateQty('bed', 1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">+</button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-200">Mattress</h4>
+                        <p class="text-[10px] text-gray-500">Ksh 150/mo</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="updateQty('mattress', -1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">-</button>
+                        <span id="qty-mattress" class="text-xs font-bold text-white w-4 text-center">0</span>
+                        <button onclick="updateQty('mattress', 1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">+</button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-200">Study Desk</h4>
+                        <p class="text-[10px] text-gray-500">Ksh 150/mo</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="updateQty('desk', -1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">-</button>
+                        <span id="qty-desk" class="text-xs font-bold text-white w-4 text-center">0</span>
+                        <button onclick="updateQty('desk', 1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">+</button>
+                    </div>
+                </div>
+
+                <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                    <div>
+                        <h4 class="text-xs font-bold text-gray-200">Suitcase / Travel Bag</h4>
+                        <p class="text-[10px] text-gray-500">Ksh 150/mo</p>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <button onclick="updateQty('bag', -1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">-</button>
+                        <span id="qty-bag" class="text-xs font-bold text-white w-4 text-center">0</span>
+                        <button onclick="updateQty('bag', 1)" class="w-6 h-6 rounded bg-gray-800 hover:bg-gray-700 text-white font-bold flex items-center justify-center text-xs transition cursor-pointer">+</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-4 border-t border-gray-800 pt-3 flex justify-between items-center bg-[#1f2937]/20 p-3 rounded-lg">
+                <div>
+                    <span class="text-[10px] text-gray-500 block">Total Items: <span id="total-items">0</span></span>
+                    <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Monthly Cost</span>
+                </div>
+                <div class="text-right">
+                    <span class="text-orange-500 font-black text-xl tracking-tight">KES <span id="total-cost">0</span></span>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="max-w-6xl w-full mx-auto bg-gray-100 p-8 border-t border-gray-200 text-xs text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4 mt-auto">
-        <div>
-            <p class="font-bold text-gray-700 text-sm">JKUAT Housing Hub</p>
-            <p class="mt-1">Powered by Lipa Na M-Pesa API • © 2026</p>
+    <section class="max-w-3xl w-full mx-auto px-6 mb-16">
+        <div class="bg-[#111827] border border-gray-800 rounded-xl p-6 md:p-8 shadow-2xl">
+            <h3 class="text-base font-bold text-white text-center mb-1">Get a Free Quote / Book Storage</h3>
+            <p class="text-[11px] text-gray-400 text-center mb-6">Fill in your information below to instantly submit your storage request to our agents.</p>
+            
+            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Name *</label>
+                        <input type="text" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-orange-500 transition">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Email Address *</label>
+                        <input type="email" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-orange-500 transition">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Phone Number (WhatsApp) *</label>
+                    <input type="tel" id="user-phone" placeholder="07xxxxxxxx" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-orange-500 transition">
+                </div>
+                <div>
+                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Describe what you need to store *</label>
+                    <textarea rows="3" required placeholder="Let us know if you have extra items not listed in the calculator..." class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-orange-500 transition"></textarea>
+                </div>
+                
+                <div id="submit-btn-area" class="pt-2">
+                    <button type="submit" class="w-full bg-orange-600 hover:bg-orange-700 text-white font-bold py-2.5 rounded text-xs transition cursor-pointer tracking-wide uppercase shadow-lg shadow-orange-600/10">
+                        Submit Storage Booking
+                    </button>
+                </div>
+            </form>
         </div>
-        <div class="text-right">
-            <p><strong>Contact Us:</strong></p>
-            <p>Phone: 0700 000 000</p>
-            <p>Email: housing@jkuat-hub.co.ke</p>
+    </section>
+
+    <footer class="bg-[#090d16] border-t border-gray-900 py-8 px-6 text-[10px] text-gray-500 mt-auto">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div>
+                <span class="font-bold text-gray-400 text-xs tracking-wide uppercase block">Hometouch Hub</span>
+                <p class="mt-1">Compliant with Kenya Data Protection Act (2019) & GDPR</p>
+            </div>
+            <div class="text-center md:text-right text-gray-400 font-medium space-y-1">
+                <p>📍 Juja, Kiambu County, Kenya</p>
+                <p>📞 0704 580 886 | 💬 0726 745 563 (WhatsApp)</p>
+                <p>✉️ info@juja.co.ke</p>
+            </div>
         </div>
     </footer>
 
-    <div id="payment-modal" class="hidden fixed inset-0 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
-        <div class="bg-white rounded-lg max-w-sm w-full p-6 shadow-xl border border-gray-100">
-            <div class="flex items-center gap-2 mb-4">
-                <div class="bg-green-600 text-white font-black px-2 py-0.5 text-xs rounded">M-PESA</div>
-                <h3 class="text-lg font-bold text-gray-900">Lipa na M-Pesa</h3>
-            </div>
-            
-            <p class="text-sm text-gray-600 mb-4">Enter your Safaricom number. You will receive an automatic prompt on your phone to pay <strong>KES 10</strong>.</p>
-            
-            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-1">Phone Number</label>
-            <input type="tel" id="phone-number" placeholder="e.g. 0712345678" class="w-full border border-gray-300 rounded px-3 py-2 text-sm focus:outline-hidden focus:ring-2 focus:ring-amber-500 mb-4">
-            
-            <button onclick="simulatePayment()" id="pay-btn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded text-sm transition cursor-pointer">
-                Send STK Push
-            </button>
-            <button onclick="closePaymentModal()" class="w-full text-center text-xs text-gray-400 hover:text-gray-600 mt-3 font-medium">Cancel</button>
-        </div>
-    </div>
-
     <script>
-        function openPaymentModal() {
-            document.getElementById('payment-modal').classList.remove('hidden');
+        const prices = { bed: 150, mattress: 150, desk: 150, bag: 150 };
+        const quantities = { bed: 0, mattress: 0, desk: 0, bag: 0 };
+
+        function updateQty(item, direction) {
+            quantities[item] = Math.max(0, quantities[item] + direction);
+            document.getElementById(`qty-${item}`).innerText = quantities[item];
+            calculateTotals();
         }
 
-        function closePaymentModal() {
-            document.getElementById('payment-modal').classList.add('hidden');
-        }
-
-        function simulatePayment() {
-            const phone = document.getElementById('phone-number').value;
-            if(!phone) {
-                alert("Please enter a valid M-Pesa phone number");
-                return;
+        function calculateTotals() {
+            let totalItems = 0;
+            let totalCost = 0;
+            
+            for (const key in quantities) {
+                totalItems += quantities[key];
+                totalCost += quantities[key] * prices[key];
             }
+            
+            document.getElementById('total-items').innerText = totalItems;
+            document.getElementById('total-cost').innerText = totalCost;
+        }
 
-            const payBtn = document.getElementById('pay-btn');
-            payBtn.innerText = "Processing Push Alert...";
-            payBtn.disabled = true;
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const phone = document.getElementById('user-phone').value;
+            const btnArea = document.getElementById('submit-btn-area');
+            
+            // Instantly process without any lock screen or paywall popup
+            btnArea.innerHTML = `
+                <div class="bg-orange-600/10 border border-orange-500/30 rounded p-4 text-center">
+                    <p class="text-xs font-bold text-orange-400 animate-pulse">Processing your request details...</p>
+                </div>
+            `;
 
-            // Simulating the backend waiting for Safaricom's webhook callback
             setTimeout(() => {
-                closePaymentModal();
-                // Replace the button with the unlocked landlord information
-                document.getElementById('action-area').innerHTML = `
-                    <div class="bg-green-50 border border-green-200 rounded p-4 text-center animate-fade-in">
-                        <p class="text-xs font-bold text-green-800 uppercase tracking-wider mb-1">🔓 Contact Unlocked Successfully</p>
-                        <p class="text-lg font-extrabold text-gray-900">Caretaker: 0722 000 111</p>
-                        <p class="text-xs text-gray-500 mt-1">Mention you found them on JKUAT Housing Hub.</p>
+                btnArea.innerHTML = `
+                    <div class="bg-green-950/40 border border-green-500/30 rounded p-4 text-center">
+                        <p class="text-xs font-extrabold text-green-400 uppercase tracking-widest mb-1">🎉 Request Sent Successfully</p>
+                        <p class="text-sm text-gray-200 font-semibold">Your booking is received! Reference ID: <span class="text-orange-400 font-mono">HT-2026-FREE</span></p>
+                        <p class="text-[11px] text-gray-400 mt-1">An agent will text or reach out directly to your phone (${phone}) on WhatsApp to finalize drop-off.</p>
                     </div>
                 `;
-            }, 2500);
+            }, 1200);
         }
     </script>
 </body>
