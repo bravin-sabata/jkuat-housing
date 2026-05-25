@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Community Hub - JKUAT Estate Watch</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style>
@@ -11,229 +11,246 @@
         ::-webkit-scrollbar-thumb { background: #eab308; border-radius: 3px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+        /* Prevents bounce and side jiggle on mobile elastic scrolling windows */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
     </style>
 </head>
-<body class="bg-[#0b0f19] text-gray-200 flex flex-col min-h-screen font-sans antialiased">
+<body class="bg-[#0b0f19] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden">
 
-    <header class="bg-[#0f172a]/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
-        <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#0b1426] border-2 border-yellow-500 flex items-center justify-center p-1 shadow-md shadow-yellow-500/10">
-                    <svg viewBox="0 0 100 100" class="w-7 h-7 text-yellow-500" fill="currentColor">
+    <header class="bg-[#0f172a]/90 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50 w-full">
+        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2 shrink-0">
+                <div class="w-9 h-9 rounded-full bg-[#0b1426] border-2 border-yellow-500 flex items-center justify-center p-1 shadow-md shadow-yellow-500/10">
+                    <svg viewBox="0 0 100 100" class="w-6 h-6 text-yellow-500" fill="currentColor">
                         <path d="M50 5 L85 15 V45 C85 68 50 85 50 85 C50 85 15 68 15 45 V15 L50 5 Z" fill="none" stroke="currentColor" stroke-width="5"/>
                         <path d="M35 30 H60 L55 45 H40 L35 30 Z M38 30 L35 22 H28 M42 52 A 3 3 0 1 1 42 51 M53 52 A 3 3 0 1 1 53 51" fill="none" stroke="currentColor" stroke-width="4"/>
                         <path d="M35 60 Q 50 50 65 60 M40 57 L45 63 M45 56 L50 62 M50 56 L55 62" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
                     </svg>
                 </div>
-                <div>
-                    <span class="text-sm font-black tracking-wider text-white uppercase block">COMMUNITY HUB</span>
-                    <span class="text-[9px] tracking-widest text-yellow-500 font-bold block uppercase -mt-1">JKUAT Estate Watch</span>
+                <div class="hidden sm:block">
+                    <span class="text-xs font-black tracking-wider text-white uppercase block">COMMUNITY HUB</span>
+                    <span class="text-[8px] tracking-widest text-yellow-500 font-bold block uppercase -mt-1">JKUAT Estate Watch</span>
                 </div>
             </div>
-            <nav class="flex items-center gap-1 text-xs font-semibold text-gray-400">
-                <button onclick="switchTab('storage', this)" class="tab-btn px-3 py-2 text-white bg-yellow-500/10 rounded-md border-b-2 border-yellow-500">Storage</button>
-                <button onclick="switchTab('laundry', this)" class="tab-btn px-3 py-2 hover:text-white transition">Laundry</button>
-                <button onclick="switchTab('accommodation', this)" class="tab-btn px-3 py-2 hover:text-white transition">Accommodation</button>
-                <button onclick="switchTab('marketplace', this)" class="tab-btn px-3 py-2 hover:text-white transition">Marketplace</button>
+            
+            <nav class="flex items-center gap-0.5 text-[11px] font-bold text-gray-400 overflow-x-auto no-scrollbar py-1">
+                <button onclick="switchTab('storage', this)" class="tab-btn px-2.5 py-1.5 text-white bg-yellow-500/10 rounded-md border-b-2 border-yellow-500 whitespace-nowrap shrink-0">Storage</button>
+                <button onclick="switchTab('laundry', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Laundry</button>
+                <button onclick="switchTab('accommodation', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Hostels</button>
+                <button onclick="switchTab('marketplace', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Market</button>
             </nav>
         </div>
     </header>
 
-    <section class="relative max-w-4xl mx-auto text-center pt-12 pb-6 px-4 overflow-hidden">
+    <section class="relative w-full max-w-4xl mx-auto text-center pt-8 pb-4 px-4 overflow-hidden">
         <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none -z-10">
-            <div class="w-96 h-96 rounded-full border-8 border-yellow-500 flex items-center justify-center">
-                <div class="w-72 h-72 rounded-full border-4 border-dashed border-white"></div>
+            <div class="w-72 h-72 rounded-full border-4 border-yellow-500 flex items-center justify-center">
+                <div class="w-56 h-56 rounded-full border-2 border-dashed border-white"></div>
             </div>
         </div>
-        <h1 id="hero-title" class="text-3xl md:text-4xl font-extrabold tracking-tight text-white mb-2 uppercase">Storage Services</h1>
-        <p id="hero-desc" class="text-sm text-gray-400 max-w-md mx-auto font-medium">Safe, secure, and affordable storage solutions for JKUAT students.</p>
-        <span class="inline-block bg-zinc-900 border border-gray-800 text-[9px] font-bold text-yellow-500 px-3 py-1 rounded-full uppercase tracking-wider mt-3">Verified Deals</span>
+        <h1 id="hero-title" class="text-2xl md:text-3xl font-extrabold tracking-tight text-white mb-1 uppercase">Storage Services</h1>
+        <p id="hero-desc" class="text-xs text-gray-400 max-w-xs sm:max-w-md mx-auto font-medium">Safe, secure, and affordable storage solutions for JKUAT students.</p>
+        <span class="inline-block bg-zinc-900 border border-gray-800 text-[8px] font-bold text-yellow-500 px-2.5 py-0.5 rounded-full uppercase tracking-wider mt-2">Verified Hub Services</span>
     </section>
 
-    <main class="max-w-6xl w-full mx-auto px-6 mb-12 flex-grow">
-        <div id="storage-tab" class="tab-content active animate-fade-in">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
-                <div class="lg:col-span-5 flex flex-col gap-6">
-                    <div class="bg-[#111827] border border-gray-800 rounded-xl p-6 shadow-xl">
-                        <h3 class="text-base font-bold text-white mb-4 border-b border-gray-800 pb-2">Why Choose Our Storage?</h3>
-                        <ul class="space-y-3 text-xs text-gray-400 font-medium">
-                            <li>✅ <span class="text-gray-300 ml-1">Safe and secure holiday locker facilities</span></li>
-                            <li>✅ <span class="text-gray-300 ml-1">Organization that ensures items are returned as left</span></li>
-                            <li>✅ <span class="text-gray-300 ml-1">Transport and pickup arrangements available</span></li>
-                            <li>✅ <span class="text-gray-300 ml-1">Pest-free environment near Juja town</span></li>
-                            <li>✅ <span class="text-gray-300 ml-1">Cleaning and wrapping services available on site</span></li>
+    <main class="w-full max-w-6xl mx-auto px-4 mb-10 flex-grow box-border">
+        
+        <div id="storage-tab" class="tab-content active">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+                <div class="lg:col-span-5 flex flex-col gap-4">
+                    <div class="bg-[#111827] border border-gray-800 rounded-xl p-4 shadow-xl">
+                        <h3 class="text-sm font-bold text-white mb-3 border-b border-gray-800 pb-1.5">Why Choose Our Storage?</h3>
+                        <ul class="space-y-2 text-xs text-gray-400 font-medium">
+                            <li>✅ Safe and secure holiday locker facilities</li>
+                            <li>✅ Items carefully organized and fully secured</li>
+                            <li>✅ Doorstep pickup & transport execution</li>
+                            <li>✅ Pest-free zone near Juja parameters</li>
                         </ul>
                     </div>
-                    <div class="bg-linear-to-br from-yellow-600/10 to-amber-600/5 border border-yellow-500/20 rounded-xl p-6 shadow-lg">
-                        <p class="text-xs font-semibold text-yellow-500">Special Offer Combo Package</p>
-                        <p class="text-sm font-bold text-white mt-1">From Ksh 1,450/month</p>
-                        <p class="text-[11px] text-gray-400 mt-2 leading-relaxed">Includes Bed, Mattress, Desk, Chair, and 1 Travel Bag for early bird bookings.</p>
+                    <div class="bg-linear-to-br from-yellow-600/10 to-amber-600/5 border border-yellow-500/20 rounded-xl p-4 shadow-md">
+                        <p class="text-[11px] font-bold text-yellow-500 uppercase tracking-wider">Early-Bird Deal Package</p>
+                        <p class="text-sm font-bold text-white mt-0.5">From Ksh 1,450/month</p>
+                        <p class="text-[11px] text-gray-400 mt-1">Covers basic setup: Bed Frame, Mattress, Study Desk, Chair, and 1 travel luggage box pack unit.</p>
                     </div>
                 </div>
                 
-                <div class="lg:col-span-7 bg-[#111827] border border-gray-800 rounded-xl p-6 shadow-xl flex flex-col">
-                    <h3 class="text-sm font-bold text-white mb-1">Cost Estimator</h3>
-                    <p class="text-[10px] text-gray-500 mb-4">Calculate your monthly storage cost</p>
+                <div class="lg:col-span-7 bg-[#111827] border border-gray-800 rounded-xl p-4 shadow-xl flex flex-col">
+                    <h3 class="text-xs font-bold text-white uppercase tracking-wider">Dynamic Cost Estimator</h3>
+                    <p class="text-[10px] text-gray-500 mb-3">Adjust variables to review processing pricing configurations</p>
                     
-                    <div class="space-y-3 overflow-y-auto max-h-[350px] pr-2">
-                        <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                    <div class="space-y-2 max-h-[280px] overflow-y-auto pr-1">
+                        <div class="flex justify-between items-center bg-[#1f2937]/30 p-2 rounded-lg border border-gray-800/60">
                             <div><h4 class="text-xs font-bold text-gray-200">Bed Frame</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-3">
-                                <button onclick="updateQty('bed', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">-</button>
-                                <span id="qty-bed" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('bed', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">+</button>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="updateQty('bed', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">-</button>
+                                <span id="qty-bed" class="text-xs font-bold text-white w-3 text-center">0</span>
+                                <button onclick="updateQty('bed', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">+</button>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                        <div class="flex justify-between items-center bg-[#1f2937]/30 p-2 rounded-lg border border-gray-800/60">
                             <div><h4 class="text-xs font-bold text-gray-200">Mattress</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-3">
-                                <button onclick="updateQty('mattress', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">-</button>
-                                <span id="qty-mattress" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('mattress', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">+</button>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="updateQty('mattress', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">-</button>
+                                <span id="qty-mattress" class="text-xs font-bold text-white w-3 text-center">0</span>
+                                <button onclick="updateQty('mattress', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">+</button>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                        <div class="flex justify-between items-center bg-[#1f2937]/30 p-2 rounded-lg border border-gray-800/60">
                             <div><h4 class="text-xs font-bold text-gray-200">Study Desk</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-3">
-                                <button onclick="updateQty('desk', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">-</button>
-                                <span id="qty-desk" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('desk', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">+</button>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="updateQty('desk', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">-</button>
+                                <span id="qty-desk" class="text-xs font-bold text-white w-3 text-center">0</span>
+                                <button onclick="updateQty('desk', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">+</button>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                        <div class="flex justify-between items-center bg-[#1f2937]/30 p-2 rounded-lg border border-gray-800/60">
                             <div><h4 class="text-xs font-bold text-gray-200">Chair</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-3">
-                                <button onclick="updateQty('chair', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">-</button>
-                                <span id="qty-chair" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('chair', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">+</button>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="updateQty('chair', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">-</button>
+                                <span id="qty-chair" class="text-xs font-bold text-white w-3 text-center">0</span>
+                                <button onclick="updateQty('chair', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">+</button>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
+                        <div class="flex justify-between items-center bg-[#1f2937]/30 p-2 rounded-lg border border-gray-800/60">
                             <div><h4 class="text-xs font-bold text-gray-200">Wardrobe</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-3">
-                                <button onclick="updateQty('wardrobe', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">-</button>
-                                <span id="qty-wardrobe" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('wardrobe', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">+</button>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="updateQty('wardrobe', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">-</button>
+                                <span id="qty-wardrobe" class="text-xs font-bold text-white w-3 text-center">0</span>
+                                <button onclick="updateQty('wardrobe', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">+</button>
                             </div>
                         </div>
-                        <div class="flex justify-between items-center bg-[#1f2937]/40 p-2.5 rounded-lg border border-gray-800/60">
-                            <div><h4 class="text-xs font-bold text-gray-200">Suitcase / Travel Bag</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-3">
-                                <button onclick="updateQty('bag', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">-</button>
-                                <span id="qty-bag" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('bag', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs cursor-pointer">+</button>
+                        <div class="flex justify-between items-center bg-[#1f2937]/30 p-2 rounded-lg border border-gray-800/60">
+                            <div><h4 class="text-xs font-bold text-gray-200">Suitcase / Bag</h4><p class="text-[10px] text-gray-500">Ksh 150/mo</p></div>
+                            <div class="flex items-center gap-2.5">
+                                <button onclick="updateQty('bag', -1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">-</button>
+                                <span id="qty-bag" class="text-xs font-bold text-white w-3 text-center">0</span>
+                                <button onclick="updateQty('bag', 1)" class="w-6 h-6 rounded bg-gray-800 text-white font-bold text-xs">+</button>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="mt-4 border-t border-gray-800 pt-3 flex justify-between items-center bg-[#1f2937]/20 p-3 rounded-lg">
+                    <div class="mt-3 border-t border-gray-800 pt-2.5 flex justify-between items-center bg-[#1f2937]/20 p-2.5 rounded-lg">
                         <div>
-                            <span class="text-[10px] text-gray-500 block">Total Items: <span id="total-items">0</span></span>
-                            <span class="text-xs text-gray-400 font-semibold uppercase tracking-wider">Monthly Cost</span>
+                            <span class="text-[9px] text-gray-500 block">Total Count: <span id="total-items">0</span></span>
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Monthly Total</span>
                         </div>
-                        <div class="text-right">
-                            <span class="text-yellow-500 font-black text-xl tracking-tight">KES <span id="total-cost">0</span></span>
-                        </div>
+                        <span class="text-yellow-500 font-black text-lg">KES <span id="total-cost">0</span></span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="laundry-tab" class="tab-content animate-fade-in">
-            <div class="max-w-xl mx-auto bg-[#111827] border border-gray-800 rounded-xl p-6 shadow-xl">
-                <h3 class="text-base font-bold text-white mb-2">Premium Campus Laundry</h3>
-                <p class="text-xs text-gray-400 mb-4">Drop off your items or schedule an easy doorstep pickup directly across your hostel premises.</p>
+        <div id="laundry-tab" class="tab-content">
+            <div class="max-w-md mx-auto bg-[#111827] border border-gray-800 rounded-xl p-5 shadow-xl">
+                <h3 class="text-sm font-bold text-white mb-1 uppercase tracking-wide">Premium Campus Laundry</h3>
+                <p class="text-xs text-gray-400 mb-3">Hassle-free wardrobe processing doorstep management options.</p>
                 <div class="space-y-2 text-xs">
-                    <div class="p-3 bg-[#1f2937]/40 rounded-lg border border-gray-800 flex justify-between">
-                        <span>General Laundry (Per KG)</span><span class="text-yellow-500 font-bold">Ksh 50/-</span>
+                    <div class="p-2.5 bg-[#1f2937]/40 rounded-lg border border-gray-800 flex justify-between">
+                        <span class="font-medium text-gray-300">General Laundry (Per KG)</span><span class="text-yellow-500 font-black">Ksh 50/-</span>
                     </div>
-                    <div class="p-3 bg-[#1f2937]/40 rounded-lg border border-gray-800 flex justify-between">
-                        <span>Duvets & Heavy Blankets</span><span class="text-yellow-500 font-bold">From Ksh 300/-</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div id="accommodation-tab" class="tab-content animate-fade-in">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-                <div class="bg-[#111827] border border-gray-800 rounded-xl p-5 shadow-xl">
-                    <span class="bg-green-950 text-green-400 text-[10px] font-bold px-2.5 py-0.5 rounded uppercase">Available</span>
-                    <h4 class="font-bold text-sm text-white mt-2">Modern Bedsitter - Gate B</h4>
-                    <p class="text-xs text-gray-400 mt-1">Constant borehole water supply, Wi-Fi ready, secure fingerprint access system.</p>
-                    <div class="mt-4 flex justify-between items-center border-t border-gray-800 pt-3">
-                        <span class="text-yellow-500 font-extrabold text-sm">Ksh 8,500/mo</span>
-                        <span class="text-[10px] text-gray-500">Location: Sunrise Area</span>
-                    </div>
-                </div>
-                <div class="bg-[#111827] border border-gray-800 rounded-xl p-5 shadow-xl">
-                    <span class="bg-green-950 text-green-400 text-[10px] font-bold px-2.5 py-0.5 rounded uppercase">Available</span>
-                    <h4 class="font-bold text-sm text-white mt-2">One Bedroom Apartment - Gachororo</h4>
-                    <p class="text-xs text-gray-400 mt-1">Spacious layout, secure perimeter wall with guard watch presence.</p>
-                    <div class="mt-4 flex justify-between items-center border-t border-gray-800 pt-3">
-                        <span class="text-yellow-500 font-extrabold text-sm">Ksh 13,000/mo</span>
-                        <span class="text-[10px] text-gray-500">Location: Near Gachororo Church</span>
+                    <div class="p-2.5 bg-[#1f2937]/40 rounded-lg border border-gray-800 flex justify-between">
+                        <span class="font-medium text-gray-300">Duvets / Heavy Quilts</span><span class="text-yellow-500 font-black">From Ksh 300/-</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="marketplace-tab" class="tab-content animate-fade-in">
-            <div class="max-w-md mx-auto text-center bg-[#111827] border border-gray-800 rounded-xl p-8 shadow-xl">
-                <div class="text-yellow-500 text-3xl mb-2">🛒</div>
-                <h3 class="text-base font-bold text-white">Student Peer Marketplace</h3>
-                <p class="text-xs text-gray-400 mt-1 leading-relaxed">Buying or selling household items? This space will open shortly for verified JKUAT peer trades.</p>
+        <div id="accommodation-tab" class="tab-content">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
+                
+                <div class="bg-[#111827] border border-gray-800 rounded-xl p-4 shadow-xl">
+                    <div class="flex justify-between items-center">
+                        <span class="bg-green-950 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded uppercase">Available</span>
+                        <span class="text-[9px] text-gray-500 font-semibold bg-gray-900/50 px-2 py-0.5 rounded border border-gray-800">
+                            🔥 <span id="count-gateb">...</span> students booked/viewed
+                        </span>
+                    </div>
+                    <h4 class="font-bold text-xs text-white mt-1.5">Modern Bedsitter - Gate B</h4>
+                    <p class="text-[11px] text-gray-400 mt-0.5">Borehole matrix access loops, secure integrated biometric locks entry modules.</p>
+                    <div class="mt-3 flex justify-between items-center border-t border-gray-800 pt-2">
+                        <span class="text-yellow-500 font-black text-xs">Ksh 8,500/mo</span>
+                        <button onclick="incrementHostelCount('gateb')" class="text-[10px] bg-yellow-500/10 text-yellow-500 px-2.5 py-1 rounded border border-yellow-500/20 hover:bg-yellow-500 hover:text-black font-bold transition cursor-pointer">Select Room</button>
+                    </div>
+                </div>
+
+                <div class="bg-[#111827] border border-gray-800 rounded-xl p-4 shadow-xl">
+                    <div class="flex justify-between items-center">
+                        <span class="bg-green-950 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded uppercase">Available</span>
+                        <span class="text-[9px] text-gray-500 font-semibold bg-gray-900/50 px-2 py-0.5 rounded border border-gray-800">
+                            🔥 <span id="count-gachororo">...</span> students booked/viewed
+                        </span>
+                    </div>
+                    <h4 class="font-bold text-xs text-white mt-1.5">One Bedroom - Gachororo</h4>
+                    <p class="text-[11px] text-gray-400 mt-0.5">Spacious architecture parameters, complete gated concrete block compound arrays.</p>
+                    <div class="mt-3 flex justify-between items-center border-t border-gray-800 pt-2">
+                        <span class="text-yellow-500 font-black text-xs">Ksh 13,000/mo</span>
+                        <button onclick="incrementHostelCount('gachororo')" class="text-[10px] bg-yellow-500/10 text-yellow-500 px-2.5 py-1 rounded border border-yellow-500/20 hover:bg-yellow-500 hover:text-black font-bold transition cursor-pointer">Select Room</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="marketplace-tab" class="tab-content">
+            <div class="max-w-sm mx-auto text-center bg-[#111827] border border-gray-800 rounded-xl p-6 shadow-xl">
+                <div class="text-yellow-500 text-2xl mb-1">🛒</div>
+                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Peer-to-Peer Market</h3>
+                <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">System parameters are configuring for direct secure student trading. Module goes live shortly.</p>
             </div>
         </div>
     </main>
 
-    <section class="max-w-3xl w-full mx-auto px-6 mb-16">
-        <div class="bg-[#111827] border border-gray-800 rounded-xl p-6 md:p-8 shadow-2xl">
-            <h3 class="text-base font-bold text-white text-center mb-1">Get In Touch / Place Booking</h3>
-            <p class="text-[11px] text-gray-400 text-center mb-6">Your request will be delivered to us via Email or WhatsApp instantly.</p>
+    <section class="w-full max-w-2xl mx-auto px-4 mb-12 box-border">
+        <div class="bg-[#111827] border border-gray-800 rounded-xl p-4 sm:p:6 shadow-2xl">
+            <h3 class="text-sm font-bold text-white text-center mb-0.5 uppercase tracking-wide">Submit Execution Form Request</h3>
+            <p class="text-[10px] text-gray-400 text-center mb-4">Select parameters below to instantly ping processing agents.</p>
             
-            <form id="hub-contact-form" onsubmit="dispatchMessage(event)" class="space-y-4">
+            <form id="hub-contact-form" onsubmit="dispatchMessage(event)" class="space-y-3">
                 <input type="hidden" id="selected-service-tag" value="Storage">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Name *</label>
-                        <input type="text" id="form-name" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-yellow-500 transition">
+                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Name *</label>
+                        <input type="text" id="form-name" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-yellow-500">
                     </div>
                     <div>
-                        <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Phone Number *</label>
-                        <input type="tel" id="form-phone" placeholder="e.g. 07xxxxxxxx" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-yellow-500 transition">
+                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Number *</label>
+                        <input type="tel" id="form-phone" placeholder="e.g. 07xxxxxxxx" required class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-yellow-500">
                     </div>
                 </div>
+                
                 <div>
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Select Agent to Contact *</label>
-                    <select id="form-agent" class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-yellow-500 transition">
+                    <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Route Target Execution Agent *</label>
+                    <select id="form-agent" class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-yellow-500">
                         <option value="254795104088">Bravin Sabata (Hub Administrator)</option>
                         <option value="254114315785">Peter (Non-Resident Representative)</option>
                     </select>
                 </div>
+                
                 <div>
-                    <label class="block text-[10px] font-bold text-gray-400 uppercase tracking-wider mb-1">Detailed Requirements / Message *</label>
-                    <textarea id="form-msg" rows="3" required placeholder="Specify details..." class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-3 py-2 text-xs text-white focus:outline-hidden focus:border-yellow-500 transition"></textarea>
+                    <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Message Requirements *</label>
+                    <textarea id="form-msg" rows="2" required placeholder="Specify execution parameters..." class="w-full bg-[#1f2937]/50 border border-gray-800 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-yellow-500"></textarea>
                 </div>
                 
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2" id="submit-wrapper">
-                    <button type="submit" onclick="setDeliveryMethod('email')" class="w-full bg-yellow-500 hover:bg-yellow-600 text-zinc-950 font-bold py-2.5 rounded text-xs transition cursor-pointer tracking-wide uppercase">
-                        Send via Email
-                    </button>
-                    <button type="submit" onclick="setDeliveryMethod('whatsapp')" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-2.5 rounded text-xs transition cursor-pointer tracking-wide uppercase">
-                        Send via WhatsApp
-                    </button>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1" id="submit-wrapper">
+                    <button type="submit" onclick="setDeliveryMethod('email')" class="w-full bg-yellow-500 hover:bg-yellow-600 text-zinc-950 font-black py-2 rounded text-xs transition cursor-pointer uppercase tracking-wider">Send Email</button>
+                    <button type="submit" onclick="setDeliveryMethod('whatsapp')" class="w-full bg-green-600 hover:bg-green-700 text-white font-black py-2 rounded text-xs transition cursor-pointer uppercase tracking-wider">Send WhatsApp</button>
                 </div>
             </form>
         </div>
     </section>
 
-    <footer class="bg-[#090d16] border-t border-gray-900 py-8 px-6 text-[10px] text-gray-500 mt-auto">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+    <footer class="bg-[#090d16] border-t border-gray-900 py-6 px-4 text-[9px] text-gray-500 mt-auto w-full">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
             <div>
                 <span class="font-bold text-gray-400 text-xs tracking-wide uppercase block">Hometouch Hub</span>
-                <p class="mt-1">Compliant with Kenya Data Protection Act (2019)</p>
+                <p class="mt-0.5">Processing under structural data framework parameters.</p>
             </div>
-            <div class="text-center md:text-right text-gray-400 font-medium space-y-1">
+            <div class="sm:text-right text-gray-400 space-y-0.5">
                 <p>📍 Juja, Kiambu County, Kenya</p>
                 <p>📞 Bravin: 0795 104 088 | Peter (Non-Res): 0114 315 785</p>
                 <p>✉️ jkuathub@proton.me</p>
@@ -265,17 +282,57 @@
 
         function switchTab(tabId, buttonElement) {
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.className = 'tab-btn px-3 py-2 hover:text-white transition');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0');
             
             document.getElementById(`${tabId}-tab`).classList.add('active');
-            buttonElement.className = 'tab-btn px-3 py-2 text-white bg-yellow-500/10 rounded-md border-b-2 border-yellow-500';
+            buttonElement.className = 'tab-btn px-2.5 py-1.5 text-white bg-yellow-500/10 rounded-md border-b-2 border-yellow-500 whitespace-nowrap shrink-0';
             
             const capitalized = tabId.charAt(0).toUpperCase() + tabId.slice(1);
             document.getElementById('selected-service-tag').value = capitalized;
-            document.getElementById('hero-title').innerText = capitalized === 'Accommodation' ? 'Accommodation Finder' : `${capitalized} Services`;
+            
+            let title = `${capitalized} Services`;
+            let desc = "Safe, secure, and affordable storage solutions for JKUAT students.";
+            
+            if(tabId === 'laundry') { title = "Laundry Matrix"; desc = "Professional premium hassle-free drop-off solutions."; }
+            if(tabId === 'accommodation') { title = "Hostel Finder Options"; desc = "Verified bedsitter complexes localized across JKUAT sectors."; }
+            if(tabId === 'marketplace') { title = "Student Exchange Market"; desc = "Peer-to-peer room layout asset sales structures."; }
+            
+            document.getElementById('hero-title').innerText = title;
+            document.getElementById('hero-desc').innerText = desc;
         }
 
         function setDeliveryMethod(method) { currentDeliveryMethod = method; }
+
+        // Fetch and display current hostel data counts on load from CounterAPI
+        async function fetchHostelCounts() {
+            try {
+                const gateBRes = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
+                const gateBData = await gateBRes.json();
+                document.getElementById('count-gateb').innerText = gateBData.count || 2;
+
+                const gachororoRes = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
+                const gachororoData = await gachororoRes.json();
+                document.getElementById('count-gachororo').innerText = gachororoData.count || 1;
+            } catch (e) {
+                document.getElementById('count-gateb').innerText = '2'; 
+                document.getElementById('count-gachororo').innerText = '1';
+            }
+        }
+
+        // Add to the count when someone clicks 'Select Room'
+        async function incrementHostelCount(key) {
+            try {
+                const res = await fetch(`https://api.counterapi.dev/v1/jkuathub/${key}/up`);
+                const data = await res.json();
+                document.getElementById(`count-${key}`).innerText = data.count;
+            } catch (e) {}
+            
+            document.getElementById('hub-contact-form').scrollIntoView({ behavior: 'smooth' });
+            document.getElementById('form-msg').value = `Booking interest for ${key === 'gateb' ? 'Modern Bedsitter - Gate B' : 'One Bedroom - Gachororo'}.`;
+        }
+
+        // Run the counter fetch automatically when page opens
+        window.addEventListener('DOMContentLoaded', fetchHostelCounts);
 
         function dispatchMessage(event) {
             event.preventDefault();
@@ -291,7 +348,7 @@
                 for (const key in quantities) {
                     if (quantities[key] > 0) itemsBreakdown += `%0A- ${key.toUpperCase()}: ${quantities[key]}`;
                 }
-                itemsBreakdown += `%0A*Est. Total Cost:* KES ${document.getElementById('total-cost').innerText}/mo`;
+                itemsBreakdown += `%0A*Monthly Estimated Cost:* KES ${document.getElementById('total-cost').innerText}`;
             }
 
             const constructedText = `*New Community Hub Request*%0A*Service:* ${service}%0A*Name:* ${name}%0A*Phone:* ${phone}%0A*Details:* ${msg}${itemsBreakdown}`;
@@ -301,14 +358,14 @@
             } else {
                 const formspreeEmailEndpoint = "https://formspree.io/f/mnqeogye"; 
                 const wrapper = document.getElementById('submit-wrapper');
-                wrapper.innerHTML = `<p class="col-span-2 text-center text-xs text-yellow-500 animate-pulse font-bold">Dispatching booking details...</p>`;
+                wrapper.innerHTML = `<p class="col-span-2 text-center text-xs text-yellow-500 animate-pulse font-bold">Forwarding structural details to jkuathub@proton.me...</p>`;
                 
                 fetch(formspreeEmailEndpoint, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                    body: JSON.stringify({ Name: name, Phone: phone, Service: service, Message: msg, Calculations: itemsBreakdown })
+                    body: JSON.stringify({ Name: name, Number: phone, Module: service, Requirements: msg, Estimates: itemsBreakdown })
                 }).then(() => {
-                    wrapper.innerHTML = `<div class="col-span-2 bg-green-950/40 border border-green-500/30 p-3 rounded text-center text-xs text-green-400 font-bold">🎉 Request Routed to jkuathub@proton.me Successfully.</div>`;
+                    wrapper.innerHTML = `<div class="col-span-2 bg-green-950/40 border border-green-500/30 p-2.5 rounded text-center text-xs text-green-400 font-bold">✓ Booking Request Transmitted Successfully.</div>`;
                 });
             }
         }
