@@ -2,431 +2,179 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>HOMETOUCH - Students Services</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Hub - Student Services</title>
     <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #071120; }
-        ::-webkit-scrollbar-thumb { background: #e5a93b; border-radius: 3px; }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-            background-color: #0d1e36;
+        /* Base Styles matching the Community Hub Brand Identity */
+        :root {
+            --primary-navy: #0F2942;
+            --accent-gold: #FAB818;
+            --light-bg: #F4F7FA;
+            --text-dark: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-bg);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: var(--primary-navy);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-bottom: 5px solid var(--accent-gold);
+        }
+
+        /* Logo Styling */
+        .logo-container {
+            margin-bottom: 15px;
+        }
+
+        .brand-logo {
+            width: 120px; /* Adjust size if needed */
+            height: 120px;
+            border-radius: 50%; /* Keeps it perfectly circular */
+            border: 3px solid white;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        header p {
+            color: var(--accent-gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            font-size: 0.95rem;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .hero {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+        }
+
+        .hero h2 {
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid var(--primary-navy);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            transition: transform 0.2s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-top-color: var(--accent-gold);
+        }
+
+        .service-card h3 {
+            color: var(--primary-navy);
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            margin-top: 60px;
+        }
+
+        /* Responsive Tweaks */
+        @media (max-width: 768px) {
+            main { margin: 20px auto; }
+            .hero { padding: 25px; }
+            .brand-logo { width: 100px; height: 100px; }
         }
     </style>
 </head>
-<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden">
+<body>
 
-    <header class="bg-[#0d1e36]/95 backdrop-blur-md border-b border-[#e5a93b]/20 sticky top-0 z-50 w-full">
-        <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
-            <div class="flex items-center gap-2 shrink-0">
-                <img src="logo.png" alt="JKUAT Community Hub Logo" class="w-10 h-10 object-contain rounded-full border border-[#e5a93b]/40 shadow-md">
-                <div>
-                    <span class="text-xs font-black tracking-wider text-white uppercase block">HOMETOUCH</span>
-                    <span class="text-[8px] tracking-widest text-[#e5a93b] font-bold block uppercase -mt-1">Community Hub Services</span>
-                </div>
-            </div>
-            
-            <nav class="flex items-center gap-1 text-[11px] font-bold text-gray-400 overflow-x-auto no-scrollbar py-1">
-                <button onclick="switchTab('home', this)" class="tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0">Home</button>
-                <button onclick="switchTab('storage', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Storage</button>
-                <button onclick="switchTab('laundry', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Laundry</button>
-                <button onclick="switchTab('accommodation', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Accommodation</button>
-                <button onclick="switchTab('marketplace', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Marketplace</button>
-            </nav>
+    <header>
+        <div class="logo-container">
+            <img src="logo.png" alt="Community Hub Logo" class="brand-logo">
         </div>
+        <h1>COMMUNITY HUB</h1>
+        <p>VERIFIED DEALS • JKUAT ESTATE WATCH</p>
     </header>
 
-    <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-grow box-border">
+    <main>
+        <section class="hero">
+            <h2>Premium Student Services in Juja</h2>
+            <p>We make campus living seamless. From secure vacation storage to doorstep laundry and verified housing near JKUAT, we've got you sorted. Click the voice agent button below to speak with our AI assistant instantly!</p>
+        </section>
 
-        <div id="home-tab" class="tab-content active">
-            <section class="text-center py-12 px-4 max-w-3xl mx-auto">
-                <div class="flex justify-center mb-4">
-                    <img src="logo.png" alt="Community Hub Logo" class="w-24 h-24 object-contain rounded-full border-2 border-[#e5a93b]/30 p-1 bg-[#0d1e36]">
-                </div>
-                <h1 class="text-4xl md:text-5xl font-light tracking-widest text-[#e5a93b] uppercase mb-1">HOMETOUCH</h1>
-                <p class="text-xs tracking-widest text-gray-400 font-medium uppercase mb-6">JKUAT Community Hub • Simple • Safe • Convenient</p>
-                
-                <div class="bg-[#122644]/60 border border-[#e5a93b]/10 rounded-2xl p-6 md:p-8 shadow-xl mt-4">
-                    <h2 class="text-sm font-bold tracking-wider text-white uppercase mb-2">YOUR ONE-STOP STUDENT SERVICES IN JUJA</h2>
-                    <p class="text-xs text-gray-300 leading-relaxed max-w-xl mx-auto font-medium">
-                        Simple solutions for simple living. We handle where it pains so you can rest easy. Student-centered, integrity-driven, and committed to excellence.
-                    </p>
-                    <div class="mt-6 flex justify-center gap-3">
-                        <button onclick="switchTab('storage', document.getElementsByClassName('tab-btn')[1])" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider cursor-pointer">Explore Storage</button>
-                        <a href="tel:+254726745563" class="bg-[#163056] border border-[#e5a93b]/20 hover:border-[#e5a93b]/40 text-white font-bold text-xs px-5 py-2.5 rounded transition uppercase tracking-wider flex items-center justify-center">Urgent Call</a>
-                    </div>
-                </div>
-            </section>
-
-            <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-5xl mx-auto">
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm">
-                    <span class="text-[#e5a93b] text-xl block mb-2">📦</span>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Storage Services</h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Safe and secure storage for your belongings. Perfect for students during holidays, attachments, or academic leave. From as low as Ksh 1,450/- per month.</p>
-                </div>
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm">
-                    <span class="text-[#e5a93b] text-xl block mb-2">👕</span>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Laundry Services</h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Professional laundry at competitive prices. General laundry at 50/- per Kg, duvets from 300/-. Pick up and delivery available.</p>
-                </div>
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm">
-                    <span class="text-[#e5a93b] text-xl block mb-2">🏠</span>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Accommodation Finder</h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Find verified bedsitter complexes and student housing options localized across JKUAT sectors seamlessly without broker hassles.</p>
-                </div>
-            </section>
-        </div>
-
-        <div id="storage-tab" class="tab-content">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                <div class="lg:col-span-5 flex flex-col gap-4">
-                    <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl">
-                        <h3 class="text-xs font-bold tracking-wider text-white mb-3 uppercase border-b border-[#e5a93b]/10 pb-1.5">Why Choose Our Storage?</h3>
-                        <ul class="space-y-2 text-xs text-gray-300 font-medium">
-                            <li>✅ Safe and secure storage facilities</li>
-                            <li>✅ Organization that ensures items are returned as left</li>
-                            <li>✅ Transport arrangements available</li>
-                            <li>✅ Pest-free environment</li>
-                            <li>✅ Cleaning and wrapping services available on site</li>
-                        </ul>
-                    </div>
-                    <div class="bg-linear-to-br from-[#e5a93b]/15 to-[#0d1e36] border border-[#e5a93b]/20 rounded-xl p-4 shadow-md">
-                        <p class="text-[10px] font-bold text-[#e5a93b] uppercase tracking-wider">Special Offer</p>
-                        <p class="text-sm font-bold text-white mt-0.5">From Ksh 1,450/-</p>
-                        <p class="text-[11px] text-gray-400 mt-1 leading-normal">Discounted rate per month (Bed, Mattress, Desk, Chair, Travel Bag) for early bird booking.</p>
-                    </div>
-                </div>
-                
-                <div class="lg:col-span-7 bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl flex flex-col">
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider">Cost Estimator</h3>
-                    <p class="text-[10px] text-gray-400 mb-3">Calculate your monthly storage cost</p>
-                    
-                    <div class="space-y-2 max-h-[300px] overflow-y-auto pr-1">
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Bed Frame</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('bed', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-bed" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('bed', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Mattress</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('mattress', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-mattress" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('mattress', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Study Desk</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('desk', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-desk" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('desk', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Chair</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('chair', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-chair" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('chair', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Wardrobe</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('wardrobe', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-wardrobe" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('wardrobe', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Suitcase / Travel Bag</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('bag', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-bag" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('bag', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-3 border-t border-[#e5a93b]/10 pt-2.5 flex justify-between items-center bg-[#0d1e36]/60 p-2.5 rounded-lg">
-                        <div>
-                            <span class="text-[9px] text-gray-400 block">Total Items: <span id="total-items">0</span></span>
-                            <span class="text-xs font-bold text-gray-300 uppercase tracking-wider">Monthly Cost</span>
-                        </div>
-                        <span class="text-[#e5a93b] font-black text-lg">KES <span id="total-cost">0</span></span>
-                    </div>
-                </div>
+        <section class="services-grid">
+            <div class="service-card">
+                <h3>📦 Secure Storage</h3>
+                <p>Safe, pest-free storage for your holiday recess. Store beds, mattresses, and bags securely starting from Ksh 1,450/month.</p>
             </div>
-
-            <section class="mt-8 border-t border-[#e5a93b]/10 pt-6 max-w-3xl mx-auto">
-                <h4 class="text-xs font-bold text-white uppercase tracking-wider text-center mb-4">Customer Reviews</h4>
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 space-y-4 shadow-md mb-4">
-                    <div class="flex items-center gap-2 border-b border-[#e5a93b]/10 pb-2">
-                        <span class="text-lg font-black text-[#e5a93b]">5.0</span>
-                        <span class="text-xs text-gray-400">Based on verified campus client experiences</span>
-                    </div>
-                    <div class="text-xs space-y-1">
-                        <p class="font-bold text-white">Emily ★★★★★</p>
-                        <p class="text-gray-400 font-medium">Very professional and you're assured of the safety of your things.</p>
-                    </div>
-                    <div class="text-xs space-y-1 border-t border-[#e5a93b]/5 pt-2">
-                        <p class="font-bold text-white">Terrence ★★★★★</p>
-                        <p class="text-gray-400 font-medium">Very professional and courteous service. Recommended.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
-
-        <div id="laundry-tab" class="tab-content">
-            <div class="max-w-md mx-auto bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-xl">
-                <h3 class="text-sm font-bold text-white mb-1 uppercase tracking-wide">Campus Laundry Hub</h3>
-                <p class="text-xs text-gray-400 mb-3">Premium doorstep drop-off solutions.</p>
-                <div class="space-y-2 text-xs">
-                    <div class="p-2.5 bg-[#0d1e36]/60 rounded-lg border border-[#e5a93b]/10 flex justify-between">
-                        <span class="font-medium text-gray-300">General Laundry (Per KG)</span><span class="text-[#e5a93b] font-black">Ksh 50/-</span>
-                    </div>
-                    <div class="p-2.5 bg-[#0d1e36]/60 rounded-lg border border-[#e5a93b]/10 flex justify-between">
-                        <span class="font-medium text-gray-300">Duvets / Heavy Quilts</span><span class="text-[#e5a93b] font-black">From Ksh 300/-</span>
-                    </div>
-                </div>
+            <div class="service-card">
+                <h3>🧺 Doorstep Laundry</h3>
+                <p>Premium washing and care at Ksh 50 per KG. Heavy duvets handled from Ksh 300 with seamless pick-up and delivery.</p>
             </div>
-        </div>
-
-        <div id="accommodation-tab" class="tab-content">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl">
-                    <div class="flex justify-between items-center">
-                        <span class="bg-green-950 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded uppercase border border-green-500/20">Available</span>
-                        <span class="text-[9px] text-gray-400 font-semibold bg-[#0d1e36]/80 px-2 py-0.5 rounded border border-[#e5a93b]/10">
-                            🔥 <span id="count-gateb">...</span> views recorded
-                        </span>
-                    </div>
-                    <h4 class="font-bold text-xs text-white mt-1.5">Modern Bedsitter - Gate B</h4>
-                    <p class="text-[11px] text-gray-400 mt-0.5">Borehole water access layout channels, highly secure structural parameters.</p>
-                    <div class="mt-3 flex justify-between items-center border-t border-[#e5a93b]/10 pt-2">
-                        <span class="text-[#e5a93b] font-black text-xs">Ksh 8,500/mo</span>
-                        <button onclick="selectHostel('Gate B Bedsitter')" class="text-[10px] bg-[#e5a93b]/10 text-[#e5a93b] px-2.5 py-1 rounded border border-[#e5a93b]/20 hover:bg-[#e5a93b] hover:text-black font-bold transition cursor-pointer">Select Room</button>
-                    </div>
-                </div>
-
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl">
-                    <div class="flex justify-between items-center">
-                        <span class="bg-green-950 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded uppercase border border-green-500/20">Available</span>
-                        <span class="text-[9px] text-gray-400 font-semibold bg-[#0d1e36]/80 px-2 py-0.5 rounded border border-[#e5a93b]/10">
-                            🔥 <span id="count-gachororo">...</span> views recorded
-                        </span>
-                    </div>
-                    <h4 class="font-bold text-xs text-white mt-1.5">One Bedroom - Gachororo</h4>
-                    <p class="text-[11px] text-gray-400 mt-0.5">Spacious architecture parameters, gated concrete block safety structure compound loops.</p>
-                    <div class="mt-3 flex justify-between items-center border-t border-[#e5a93b]/10 pt-2">
-                        <span class="text-[#e5a93b] font-black text-xs">Ksh 13,000/mo</span>
-                        <button onclick="selectHostel('Gachororo 1-Bedroom')" class="text-[10px] bg-[#e5a93b]/10 text-[#e5a93b] px-2.5 py-1 rounded border border-[#e5a93b]/20 hover:bg-[#e5a93b] hover:text-black font-bold transition cursor-pointer">Select Room</button>
-                    </div>
-                </div>
+            <div class="service-card">
+                <h3>🏠 Accommodation Finder</h3>
+                <p>Skip the broker drama. Discover verified, high-quality bedsitters and 1-bedroom apartments around Gate B, Gachororo, and Oasis.</p>
             </div>
-        </div>
-
-        <div id="marketplace-tab" class="tab-content">
-            <div class="max-w-sm mx-auto text-center bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-6 shadow-xl">
-                <div class="text-[#e5a93b] text-2xl mb-1">🛒</div>
-                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Peer-to-Peer Market</h3>
-                <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">Direct secure student asset trading module opens soon.</p>
-            </div>
-        </div>
-
+        </section>
     </main>
 
-    <section class="w-full max-w-2xl mx-auto px-4 mb-12 box-border" id="booking-container">
-        <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-2xl">
-            <h3 class="text-xs font-bold text-white text-center mb-0.5 uppercase tracking-wider">GET IN TOUCH</h3>
-            <p class="text-[10px] text-gray-400 text-center mb-4">Have questions? Send us a message and your request drops straight into our booking basket loop.</p>
-            
-            <form id="hub-contact-form" onsubmit="dispatchMessage(event)" class="space-y-3">
-                <input type="hidden" id="selected-service-tag" value="General Home Enquiry">
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Name *</label>
-                        <input type="text" id="form-name" required placeholder="Name" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
-                    </div>
-                    <div>
-                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Email Address *</label>
-                        <input type="email" id="form-email" required placeholder="name@domain.com" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
-                    </div>
-                    <div>
-                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Phone Number *</label>
-                        <input type="tel" id="form-phone" placeholder="07xxxxxxxx" required class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Message Requirements *</label>
-                    <textarea id="form-msg" rows="3" required placeholder="Describe what you need or items you wish to store..." class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]"></textarea>
-                </div>
-                
-                <button type="submit" class="w-full bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-xs transition cursor-pointer uppercase tracking-wider">Send Message</button>
-            </form>
-
-            <div class="mt-4 pt-3 border-t border-[#e5a93b]/10 text-center">
-                <p class="text-[10px] text-gray-400 font-medium mb-2">🚨 Extremely Urgent Booking? Call Peter Wabwire directly:</p>
-                <div class="grid grid-cols-2 gap-2 max-w-sm mx-auto">
-                    <a href="tel:+254726745563" class="bg-[#0d1e36] border border-[#e5a93b]/10 hover:border-[#e5a93b] text-white font-bold py-1.5 px-2 rounded text-[10px] transition flex items-center justify-center gap-1 shadow-sm">
-                        📞 Peter Wabwire (Line 1)
-                    </a>
-                    <a href="tel:+254704580886" class="bg-[#0d1e36] border border-[#e5a93b]/10 hover:border-[#e5a93b] text-gray-400 font-medium py-1.5 px-2 rounded text-[10px] transition flex items-center justify-center gap-1">
-                        📞 Support Line 2
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer class="bg-[#071120] border-t border-[#e5a93b]/10 py-6 px-4 text-[9px] text-gray-500 mt-auto w-full">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-            <div>
-                <span class="font-bold text-gray-400 text-xs tracking-wide uppercase block">HOMETOUCH</span>
-                <p class="mt-0.5">Your trusted partner for student services at JKUAT.</p>
-            </div>
-            <div class="sm:text-right text-gray-400 space-y-0.5">
-                <p>📍 Juja, Kiambu County, Kenya</p>
-                <p>📞 Primary: 0726 745 563 (Peter Wabwire)</p>
-                <p>📞 Secondary: 0704 580 886</p>
-                <p>✉️ info@juja.co.ke</p>
-            </div>
-        </div>
-        <div class="text-center mt-4 border-t border-[#e5a93b]/5 pt-3 text-[8px] text-gray-600">
-            © 2026 Hometouch Students Services. All rights reserved. | Compliant with Kenya Data Protection Act (2019) & GDPR
-        </div>
+    <footer>
+        &copy; 2026 Community Hub Student Services. All Rights Reserved.
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@1/dist/vapi-sdk.js"></script>
+
     <script>
-        const prices = { bed: 150, mattress: 150, desk: 150, chair: 150, wardrobe: 150, bag: 150 };
-        const quantities = { bed: 0, mattress: 0, desk: 0, chair: 0, wardrobe: 0, bag: 0 };
+      // REPLACE 'YOUR_PUBLIC_KEY' with the key from your Vapi Account/Settings tab
+      const vapi = new Vapi("YOUR_PUBLIC_KEY");
 
-        function updateQty(item, direction) {
-            quantities[item] = Math.max(0, quantities[item] + direction);
-            document.getElementById(`qty-${item}`).innerText = quantities[item];
-            calculateTotals();
-        }
-
-        function calculateTotals() {
-            let totalItems = 0;
-            let totalCost = 0;
-            for (const key in quantities) {
-                totalItems += quantities[key];
-                totalCost += quantities[key] * prices[key];
-            }
-            document.getElementById('total-items').innerText = totalItems;
-            document.getElementById('total-cost').innerText = totalCost;
-        }
-
-        function switchTab(tabId, buttonElement) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0');
-            
-            document.getElementById(`${tabId}-tab`).classList.add('active');
-            buttonElement.className = 'tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0';
-            
-            const serviceTitles = { home: 'General Home Enquiry', storage: 'Storage Service', laundry: 'Laundry Service', accommodation: 'Accommodation Finder', marketplace: 'Marketplace System' };
-            document.getElementById('selected-service-tag').value = serviceTitles[tabId];
-        }
-
-        async function fetchHostelCounts() {
-            try {
-                const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
-                const data1 = await res1.json();
-                document.getElementById('count-gateb').innerText = data1.count || 24;
-
-                const res2 = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
-                const data2 = await res2.json();
-                document.getElementById('count-gachororo').innerText = data2.count || 18;
-            } catch (e) {
-                document.getElementById('count-gateb').innerText = '14'; 
-                document.getElementById('count-gachororo').innerText = '9';
-            }
-        }
-
-        function selectHostel(hostelName) {
-            document.getElementById('booking-container').scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('form-msg').value = `Hi Hometouch, I am highly interested in booking space details for the layout matching: ${hostelName}. Please brief me on vacancy processing.`;
-        }
-
-        window.addEventListener('DOMContentLoaded', fetchHostelCounts);
-
-        function dispatchMessage(event) {
-            event.preventDefault();
-            const formspreeFormId = "mykvnjpv"; 
-            
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const phone = document.getElementById('form-phone').value;
-            const msg = document.getElementById('form-msg').value;
-            const service = document.getElementById('selected-service-tag').value;
-            
-            let itemsBreakdown = 'None Supplied';
-            if (service === 'Storage Service' && document.getElementById('total-items').innerText !== '0') {
-                itemsBreakdown = '';
-                for (const key in quantities) {
-                    if (quantities[key] > 0) itemsBreakdown += `${key.toUpperCase()}: ${quantities[key]} units | `;
-                }
-                itemsBreakdown += `Est Total Cost: KES ${document.getElementById('total-cost').innerText}/mo`;
-            }
-
-            const container = document.getElementById('booking-container');
-            container.innerHTML = `
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-8 text-center shadow-2xl">
-                    <p class="text-xs text-[#e5a93b] animate-pulse font-bold tracking-wider uppercase">Depositing your request into the processing basket...</p>
-                </div>`;
-            
-            const formspreeEmailEndpoint = `https://formspree.io/f/${formspreeFormId}`; 
-            
-            fetch(formspreeEmailEndpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ 
-                    StudentName: name, 
-                    StudentEmail: email,
-                    StudentPhone: phone, 
-                    ScopeTarget: service, 
-                    MessageContent: msg, 
-                    CalculatedStorageBreakdown: itemsBreakdown 
-                })
-            }).then(() => {
-                container.innerHTML = `
-                    <div class="bg-[#11233d] border border-[#e5a93b]/30 rounded-xl p-6 md:p-8 shadow-2xl text-center">
-                        <div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-400 text-xl mx-auto mb-3 border border-green-500/20">✓</div>
-                        <h3 class="text-base font-black text-white uppercase tracking-wide">Request Queued Successfully!</h3>
-                        <p class="text-xs text-gray-300 font-medium max-w-md mx-auto mt-2 leading-relaxed">
-                            Thank you for contacting <span class="text-[#e5a93b] font-bold">Hometouch Community Hub</span>. Your context block has dropped safely into our processing basket. You'll hear back from us in <span class="text-white font-bold">less than 24 hours</span>.
-                        </p>
-                        <div class="mt-4 p-3 bg-[#0d1e36]/60 border border-[#e5a93b]/10 rounded-lg text-left max-w-md mx-auto">
-                            <span class="text-[9px] font-bold text-[#e5a93b] uppercase tracking-widest block mb-1">Meanwhile...</span>
-                            <p class="text-[11px] text-gray-400 leading-normal">
-                                If you have an additional question, correction, or extra context, you can go ahead and submit another message block right below or wait for our agent's reach out.
-                            </p>
-                        </div>
-                        <div class="mt-5 pt-3 border-t border-[#e5a93b]/10">
-                            <p class="text-[9px] text-gray-400 font-semibold uppercase tracking-wider mb-2">Need immediate real-time response?</p>
-                            <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                                <a href="tel:+254726745563" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Peter</a>
-                                <a href="tel:+254704580886" class="bg-[#163056] border border-[#e5a93b]/10 hover:bg-[#11233d] text-white font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Support</a>
-                            </div>
-                        </div>
-                        <button onclick="window.location.reload()" class="mt-4 text-[10px] text-gray-400 hover:text-[#e5a93b] underline transition cursor-pointer">Submit another entry</button>
-                    </div>`;
-            }).catch(() => {
-                container.innerHTML = `<div class="bg-[#11233d] border border-red-500/20 rounded-xl p-6 text-center text-xs text-red-400">Submission error. Please verify endpoints.</div>`;
-            });
-        }
+      // This generates the floating telephone call button on the screen
+      vapi.createButton({
+        assistant: "5dc578e9-e1d5-4182-b2bc-ecb03f863b84", // Your Assistant ID from the dashboard
+        config: {
+          position: "bottom-right",
+          title: "Call Assistant",
+          subtitle: "Community Hub AI",
+          color: "#0F2942", // Matches your deep navy blue branding
+        },
+      });
     </script>
+
 </body>
 </html>
