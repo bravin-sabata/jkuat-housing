@@ -10,53 +10,24 @@
         .tab-content { display: none; }
         .tab-content.active { display: block; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
-        .fixed { position: fixed; z-index: 9999; }
     </style>
 </head>
-
-<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden relative">
-
-    <header class="bg-[#0d1e36]/95 backdrop-blur-md border-b border-[#e5a93b]/20 sticky top-0 z-50 w-full">
-        </header>
-
-    <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-grow box-border">
-        </main>
-
-    <script>
-        // ... your existing JS functions ...
-        async function fetchHostelCounts() {
-            try {
-                const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
-                const data1 = await res1.json();
-                document.getElementById('count-gateb').innerText = data1.count || 24;
-
-                const res2 = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
-                const data2 = await res2.json();
-                document.getElementById('count-gachororo').innerText = data2.count || 18;
-            } catch (err) {
-                console.error("Error fetching counts:", err);
-            }
-        }
-        fetchHostelCounts();
-    </script>
-</body>
-</html>
-<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden relative">
+<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full overflow-x-hidden">
 
     <header class="bg-[#0d1e36]/95 backdrop-blur-md border-b border-[#e5a93b]/20 sticky top-0 z-50 w-full">
         <div class="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-2">
             <div class="flex items-center gap-2 shrink-0">
                <img src="https://i.postimg.cc/KjqJXsmm/JKUAT-HUB-Logo.jpg" alt="Community Hub Logo" class="w-24 h-24 object-contain rounded-full border-2 border-[#e5a93b]/30 p-1 bg-[#0d1e36]">
-                <div>
+               <div>
                     <span class="text-xs font-black tracking-wider text-white uppercase block">HOMETOUCH</span>
                     <span class="text-[8px] tracking-widest text-[#e5a93b] font-bold block uppercase -mt-1">Community Hub Services</span>
-                </div>
+               </div>
             </div>
-            
             <nav class="flex items-center gap-1 text-[11px] font-bold text-gray-400 overflow-x-auto no-scrollbar py-1">
                 <button onclick="switchTab('home', this)" class="tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0">Home</button>
                 <button onclick="switchTab('storage', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Storage</button>
                 <button onclick="switchTab('laundry', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Laundry</button>
+                <button onclick="switchTab('courier', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Courier</button>
                 <button onclick="switchTab('accommodation', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Accommodation</button>
                 <button onclick="switchTab('marketplace', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Marketplace</button>
             </nav>
@@ -64,481 +35,64 @@
     </header>
 
     <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-grow box-border">
-
         <div id="home-tab" class="tab-content active">
-            <section class="text-center py-12 px-4 max-w-3xl mx-auto">
-                <div class="flex justify-center mb-4">
-                    <img src="https://i.postimg.cc/KjqJXsmm/JKUAT-HUB-Logo.jpg" alt="Community Hub Logo" class="w-24 h-24 object-contain rounded-full border-2 border-[#e5a93b]/30 p-1 bg-[#0d1e36]">
-                </div>
-                <h1 class="text-4xl md:text-5xl font-light tracking-widest text-[#e5a93b] uppercase mb-1">HOMETOUCH</h1>
-                <p class="text-xs tracking-widest text-gray-400 font-medium uppercase mb-6">JKUAT Community Hub • Simple • Safe • Convenient</p>
-                
-                <div class="bg-[#122644]/60 border border-[#e5a93b]/10 rounded-2xl p-6 md:p-8 shadow-xl mt-4">
-                    <h2 class="text-sm font-bold tracking-wider text-white uppercase mb-2">YOUR ONE-STOP STUDENT SERVICES IN JUJA</h2>
-                    <p class="text-xs text-gray-300 leading-relaxed max-w-xl mx-auto font-medium">
-                        Simple solutions for simple living. We handle where it pains so you can rest easy. Student-centered, integrity-driven, and committed to excellence.
-                    </p>
-                    <div class="mt-6 flex flex-wrap justify-center gap-3">
-                        <button onclick="switchTab('storage', document.getElementsByClassName('tab-btn')[1])" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider cursor-pointer">Explore Storage</button>
-                        <button onclick="toggleVapiCall()" class="bg-green-600 hover:bg-green-700 text-white font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider flex items-center gap-2 cursor-pointer">
-                            <span class="relative flex h-2 w-2">
-                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
-                                <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
-                            </span>
-                            Speak to AI Agent
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <section class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4 max-w-5xl mx-auto">
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm flex flex-col items-start">
-                    <div class="text-[#e5a93b] mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 01-2.247 2.118H6.622a2.25 2.25 0 01-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Storage Services</h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Safe and secure storage for your belongings. Perfect for students during holidays, attachments, or academic leave. From as low as Ksh 1,450/- per month.</p>
-                </div>
-
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm flex flex-col items-start">
-                    <div class="text-[#e5a93b] mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 21m0 0l-.813-5.096M9 21h3.375c.621 0 1.125-.504 1.125-1.125V18M14.25 15.904L15 21m0 0l.813-5.096M15 21H11.625M12 3v1.5m0 9V15m0-9a3 3 0 110 6 3 3 0 010-6zM3.75 6h.008v.008H3.75V6zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 9h.008v.008H3.75V9zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Laundry Services</h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Professional laundry at competitive prices. General laundry at 50/- per Kg, duvets from 300/-. Pick up and delivery available.</p>
-                </div>
-
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-sm flex flex-col items-start">
-                    <div class="text-[#e5a93b] mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider mb-1.5">Accommodation Finder</h3>
-                    <p class="text-[11px] text-gray-400 leading-relaxed font-medium">Find verified bedsitter complexes and student housing options localized across JKUAT sectors seamlessly without broker hassles.</p>
-                </div>
-            </section>
-        </div>
+            </div>
 
         <div id="storage-tab" class="tab-content">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4">
-                <div class="lg:col-span-5 flex flex-col gap-4">
-                    <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl">
-                        <h3 class="text-xs font-bold tracking-wider text-white mb-3 uppercase border-b border-[#e5a93b]/10 pb-1.5">Why Choose Our Storage?</h3>
-                        <ul class="space-y-2 text-xs text-gray-300 font-medium">
-                            <li>✅ Safe and secure storage facilities</li>
-                            <li>✅ Organization that ensures items are returned as left</li>
-                            <li>✅ Transport arrangements available</li>
-                            <li>✅ Pest-free environment</li>
-                            <li>✅ Cleaning and wrapping services available on site</li>
-                        </ul>
-                    </div>
-                    <div class="bg-gradient-to-br from-[#e5a93b]/15 to-[#0d1e36] border border-[#e5a93b]/20 rounded-xl p-4 shadow-md">
-                        <p class="text-[10px] font-bold text-[#e5a93b] uppercase tracking-wider">Special Offer</p>
-                        <p class="text-sm font-bold text-white mt-0.5">From Ksh 1,450/-</p>
-                        <p class="text-[11px] text-gray-400 mt-1 leading-normal">Discounted rate per month (Bed, Mattress, Desk, Chair, Travel Bag) for early bird booking.</p>
-                    </div>
-                </div>
-                
-                <div class="lg:col-span-7 bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl flex flex-col">
-                    <h3 class="text-xs font-bold text-white uppercase tracking-wider">Cost Estimator</h3>
-                    <p class="text-[10px] text-gray-400 mb-3">Calculate your monthly storage cost</p>
-                    
-                    <div class="space-y-2 max-h-[300px] overflow-y-auto pr-1">
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Bed Frame</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('bed', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-bed" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('bed', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Mattress</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('mattress', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-mattress" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('mattress', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Study Desk</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('desk', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-desk" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('desk', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Chair</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('chair', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-chair" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('chair', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Wardrobe</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('wardrobe', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-wardrobe" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('wardrobe', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-center bg-[#0d1e36]/40 p-2 rounded-lg border border-[#e5a93b]/5">
-                            <div><h4 class="text-xs font-bold text-gray-200">Suitcase / Travel Bag</h4><p class="text-[10px] text-gray-400">Ksh 150/mo</p></div>
-                            <div class="flex items-center gap-2.5">
-                                <button onclick="updateQty('bag', -1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">-</button>
-                                <span id="qty-bag" class="text-xs font-bold text-white w-4 text-center">0</span>
-                                <button onclick="updateQty('bag', 1)" class="w-6 h-6 rounded bg-[#163056] border border-[#e5a93b]/10 text-white font-bold text-xs hover:border-[#e5a93b]/30">+</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="mt-3 border-t border-[#e5a93b]/10 pt-2.5 flex justify-between items-center bg-[#0d1e36]/60 p-2.5 rounded-lg">
-                        <div>
-                            <span class="text-[9px] text-gray-400 block">Total Items: <span id="total-items">0</span></span>
-                            <span class="text-xs font-bold text-gray-300 uppercase tracking-wider">Monthly Cost</span>
-                        </div>
-                        <span class="text-[#e5a93b] font-black text-lg">KES <span id="total-cost">0</span></span>
-                    </div>
-                </div>
             </div>
-
-            <section class="mt-8 border-t border-[#e5a93b]/10 pt-6 max-w-3xl mx-auto">
-                <h4 class="text-xs font-bold text-white uppercase tracking-wider text-center mb-4">Customer Reviews</h4>
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 space-y-4 shadow-md mb-4">
-                    <div class="flex items-center gap-2 border-b border-[#e5a93b]/10 pb-2">
-                        <span class="text-lg font-black text-[#e5a93b]">5.0</span>
-                        <span class="text-xs text-gray-400">Based on verified campus client experiences</span>
-                    </div>
-                    <div class="text-xs space-y-1">
-                        <p class="font-bold text-white">Emily ★★★★★</p>
-                        <p class="text-gray-400 font-medium">Very professional and you're assured of the safety of your things.</p>
-                    </div>
-                    <div class="text-xs space-y-1 border-t border-[#e5a93b]/5 pt-2">
-                        <p class="font-bold text-white">Terrence ★★★★★</p>
-                        <p class="text-gray-400 font-medium">Very professional and courteous service. Recommended.</p>
-                    </div>
-                </div>
-            </section>
-        </div>
 
         <div id="laundry-tab" class="tab-content">
-            <div class="max-w-md mx-auto bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-xl">
-                <h3 class="text-sm font-bold text-white mb-1 uppercase tracking-wide">Campus Laundry Hub</h3>
-                <p class="text-xs text-gray-400 mb-3">Premium doorstep drop-off solutions.</p>
-                <div class="space-y-2 text-xs">
-                    <div class="p-2.5 bg-[#0d1e36]/60 rounded-lg border border-[#e5a93b]/10 flex justify-between">
-                        <span class="font-medium text-gray-300">General Laundry (Per KG)</span><span class="text-[#e5a93b] font-black">Ksh 50/-</span>
-                    </div>
-                    <div class="p-2.5 bg-[#0d1e36]/60 rounded-lg border border-[#e5a93b]/10 flex justify-between">
-                        <span class="font-medium text-gray-300">Duvets / Heavy Quilts</span><span class="text-[#e5a93b] font-black">From Ksh 300/-</span>
-                    </div>
-                </div>
             </div>
+
+        <div id="courier-tab" class="tab-content">
+            <section class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-8 max-w-lg mx-auto text-center shadow-xl">
+                <h3 class="text-sm font-bold text-white uppercase tracking-wider mb-4">Courier & Delivery</h3>
+                <p class="text-[12px] text-gray-400 mb-6">Need a package moved? We handle secure student deliveries within JKUAT and Juja. From documents to groceries, we get it done.</p>
+                <button onclick="window.location.href='https://wa.me/254795104088'" class="w-full bg-[#e5a93b] text-[#0d1e36] font-black py-3 rounded text-xs uppercase tracking-wider transition hover:bg-[#cca325]">
+                    Book a Courier (WhatsApp)
+                </button>
+            </section>
         </div>
 
         <div id="accommodation-tab" class="tab-content">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto">
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl">
-                    <div class="flex justify-between items-center">
-                        <span class="bg-green-950 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded uppercase border border-green-500/20">Available</span>
-                        <span class="text-[9px] text-gray-400 font-semibold bg-[#0d1e36]/80 px-2 py-0.5 rounded border border-[#e5a93b]/10">
-                            🔥 <span id="count-gateb">...</span> views recorded
-                        </span>
-                    </div>
-                    <h4 class="font-bold text-xs text-white mt-1.5">Modern Bedsitter - Gate B</h4>
-                    <p class="text-[11px] text-gray-400 mt-0.5">Borehole water access layout channels, highly secure structural parameters.</p>
-                    <div class="mt-3 flex justify-between items-center border-t border-[#e5a93b]/10 pt-2">
-                        <span class="text-[#e5a93b] font-black text-xs">Ksh 8,500/mo</span>
-                        <button onclick="selectHostel('Gate B Bedsitter')" class="text-[10px] bg-[#e5a93b]/10 text-[#e5a93b] px-2.5 py-1 rounded border border-[#e5a93b]/20 hover:bg-[#e5a93b] hover:text-black font-bold transition cursor-pointer">Select Room</button>
-                    </div>
-                </div>
-
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-4 shadow-xl">
-                    <div class="flex justify-between items-center">
-                        <span class="bg-green-950 text-green-400 text-[9px] font-bold px-2 py-0.5 rounded uppercase border border-green-500/20">Available</span>
-                        <span class="text-[9px] text-gray-400 font-semibold bg-[#0d1e36]/80 px-2 py-0.5 rounded border border-[#e5a93b]/10">
-                            🔥 <span id="count-gachororo">...</span> views recorded
-                        </span>
-                    </div>
-                    <h4 class="font-bold text-xs text-white mt-1.5">One Bedroom - Gachororo</h4>
-                    <p class="text-[11px] text-gray-400 mt-0.5">Spacious architecture parameters, gated concrete block safety structure compound loops.</p>
-                    <div class="mt-3 flex justify-between items-center border-t border-[#e5a93b]/10 pt-2">
-                        <span class="text-[#e5a93b] font-black text-xs">Ksh 13,000/mo</span>
-                        <button onclick="selectHostel('Gachororo 1-Bedroom')" class="text-[10px] bg-[#e5a93b]/10 text-[#e5a93b] px-2.5 py-1 rounded border border-[#e5a93b]/20 hover:bg-[#e5a93b] hover:text-black font-bold transition cursor-pointer">Select Room</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+             </div>
 
         <div id="marketplace-tab" class="tab-content">
-            <div class="max-w-sm mx-auto text-center bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-6 shadow-xl">
-                <div class="text-[#e5a93b] text-2xl mb-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-8 h-8 mx-auto">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-16.5-3zM12.25 15.75a3 3 0 11-6 0 3 3 0 016 0zm6.375 0a3 3 0 11-6 0 3 3 0 016 0zM3.75 6h16.5a1.5 1.5 0 011.5 1.5v2.25a1.5 1.5 0 01-1.5 1.5H3.75a1.5 1.5 0 01-1.5-1.5V7.5A1.5 1.5 0 013.75 6z" />
-                    </svg>
-                </div>
-                <h3 class="text-xs font-bold text-white uppercase tracking-wider">Peer-to-Peer Market</h3>
-                <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">Direct secure student asset trading module opens soon.</p>
-            </div>
-        </div>
-
+             </div>
     </main>
 
-    <section class="w-full max-w-2xl mx-auto px-4 mb-12 box-border" id="booking-container">
-        <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-2xl">
-            <h3 class="text-xs font-bold text-white text-center mb-0.5 uppercase tracking-wider">GET IN TOUCH</h3>
-            <p class="text-[10px] text-gray-400 text-center mb-4">Have questions? Send us a message and your request drops straight into our booking basket loop.</p>
-            
-            <form id="hub-contact-form" onsubmit="dispatchMessage(event)" class="space-y-3">
-                <input type="hidden" id="selected-service-tag" value="General Home Enquiry">
-                
-                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                    <div>
-                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Name *</label>
-                        <input type="text" id="form-name" required placeholder="Name" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
-                    </div>
-                    <div>
-                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Email Address *</label>
-                        <input type="email" id="form-email" required placeholder="name@domain.com" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
-                    </div>
-                    <div>
-                        <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Phone Number *</label>
-                        <input type="tel" id="form-phone" placeholder="07xxxxxxxx" required class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
-                    </div>
-                </div>
-                
-                <div>
-                    <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Message Requirements *</label>
-                    <textarea id="form-msg" rows="3" required placeholder="Describe what you need or items you wish to store..." class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]"></textarea>
-                </div>
-                
-                <button type="submit" class="w-full bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-xs transition cursor-pointer uppercase tracking-wider">Send Message</button>
-            </form>
-
-            <div class="mt-4 pt-3 border-t border-[#e5a93b]/10 text-center">
-                <p class="text-[10px] text-gray-400 font-medium mb-2">🚨 Extremely Urgent Booking? Call Peter Wabwire directly:</p>
-                <div class="grid grid-cols-2 gap-2 max-w-sm mx-auto">
-                    <a href="tel:+2540114315785" class="bg-[#0d1e36] border border-[#e5a93b]/10 hover:border-[#e5a93b] text-white font-bold py-1.5 px-2 rounded text-[10px] transition flex items-center justify-center gap-1 shadow-sm">
-                        📞 Peter Wabwire (Line 1)
-                    </a>
-                    <a href="tel:+254795104088" class="bg-[#0d1e36] border border-[#e5a93b]/10 hover:border-[#e5a93b] text-gray-400 font-medium py-1.5 px-2 rounded text-[10px] transition flex items-center justify-center gap-1">
-                        📞 Support Line 2
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div class="fixed bottom-6 right-6 z-50">
-       <button id="vapi-widget-btn" 
-        onclick="toggleVapiCall()" 
-        ontouchstart="toggleVapiCall()" 
-        class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
-            <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
-            
-            <svg id="vapi-icon-idle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.433-5.147-3.756-6.58-6.58l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-            
-            <svg id="vapi-icon-active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 hidden text-red-600">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-            
-            <span class="absolute right-16 bg-[#11233d] border border-[#e5a93b]/20 text-[#e5a93b] font-bold text-[10px] uppercase px-2 py-1 rounded tracking-wider shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">Ask Assistant</span>
-        </button>
-    </div>
-
-    <footer class="bg-[#071120] border-t border-[#e5a93b]/10 py-6 px-4 text-[9px] text-gray-500 mt-auto w-full">
-        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
-            <div>
-                <span class="font-bold text-gray-400 text-xs tracking-wide uppercase block">HOMETOUCH</span>
-                <p class="mt-0.5">Your trusted partner for student services at JKUAT.</p>
-            </div>
-            <div class="sm:text-right text-gray-400 space-y-0.5">
-                <p>📍 Juja, Kiambu County, Kenya</p>
-                <p>📞 Primary: 0114315785(Peter Wabwire)</p>
-                <p>📞 Secondary: 0795104088</p>
-                <p>✉️ info@juja.co.ke</p>
-            </div>
-        </div>
-        <div class="text-center mt-4 border-t border-[#e5a93b]/5 pt-3 text-[8px] text-gray-600">
-            © 2026 Hometouch Students Services. All rights reserved. | Compliant with Kenya Data Protection Act (2019) & GDPR
-        </div>
-    </footer>
-
     <script>
-        const prices = { bed: 150, mattress: 150, desk: 150, chair: 150, wardrobe: 150, bag: 150 };
-        const quantities = { bed: 0, mattress: 0, desk: 0, chair: 0, wardrobe: 0, bag: 0 };
+        // --- VAPI INITIALIZATION ---
+        const vapi = new Vapi('YOUR_PUBLIC_KEY_HERE'); 
 
-        function updateQty(item, direction) {
-            quantities[item] = Math.max(0, quantities[item] + direction);
-            document.getElementById(`qty-${item}`).innerText = quantities[item];
-            calculateTotals();
-        }
-
-        function calculateTotals() {
-            let totalItems = 0;
-            let totalCost = 0;
-            for (const key in quantities) {
-                totalItems += quantities[key];
-                totalCost += quantities[key] * prices[key];
-            }
-            document.getElementById('total-items').innerText = totalItems;
-            document.getElementById('total-cost').innerText = totalCost;
-        }
-
-        function switchTab(tabId, buttonElement) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0');
-            
-            document.getElementById(`${tabId}-tab`).classList.add('active');
-            buttonElement.className = 'tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0';
-            
-            const serviceTitles = { home: 'General Home Enquiry', storage: 'Storage Service', laundry: 'Laundry Service', accommodation: 'Accommodation Finder', marketplace: 'Marketplace System' };
-            document.getElementById('selected-service-tag').value = serviceTitles[tabId];
-        }
-
-        async function fetchHostelCounts() {
-            try {
-                const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
-                const data1 = await res1.json();
-                document.getElementById('count-gateb').innerText = data1.count || 24;
-
-                const res2 = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
-                const data2 = await res2.json();
-                document.getElementById('count-gachororo').innerText = data2.count || 18;
-            } catch (e) {
-                document.getElementById('count-gateb').innerText = '14'; 
-                document.getElementById('count-gachororo').innerText = '9';
-            }
-        }
-
-        function selectHostel(hostelName) {
-            document.getElementById('booking-container').scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('form-msg').value = `Hi Hometouch, I am highly interested in booking space details for the layout matching: ${hostelName}. Please brief me on vacancy processing.`;
-        }
-
-        window.addEventListener('DOMContentLoaded', fetchHostelCounts);
-
-        function dispatchMessage(event) {
-            event.preventDefault();
-            const formspreeFormId = "mykvnjpv"; 
-            
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const phone = document.getElementById('form-phone').value;
-            const msg = document.getElementById('form-msg').value;
-            const service = document.getElementById('selected-service-tag').value;
-            
-            let itemsBreakdown = 'None Supplied';
-            if (service === 'Storage Service' && document.getElementById('total-items').innerText !== '0') {
-                itemsBreakdown = '';
-                for (const key in quantities) {
-                    if (quantities[key] > 0) itemsBreakdown += `${key.toUpperCase()}: ${quantities[key]} units | `;
-                }
-                itemsBreakdown += `Est Total Cost: KES ${document.getElementById('total-cost').innerText}/mo`;
-            }
-
-            const container = document.getElementById('booking-container');
-            container.innerHTML = `
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-8 text-center shadow-2xl">
-                    <p class="text-xs text-[#e5a93b] animate-pulse font-bold tracking-wider uppercase">Depositing your request into the processing basket...</p>
-                </div>`;
-            
-            const formspreeEmailEndpoint = `https://formspree.io/f/${formspreeFormId}`; 
-            
-            fetch(formspreeEmailEndpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ 
-                    StudentName: name, 
-                    StudentEmail: email,
-                    StudentPhone: phone, 
-                    ScopeTarget: service, 
-                    MessageContent: msg, 
-                    CalculatedStorageBreakdown: itemsBreakdown 
-                })
-            }).then(() => {
-                container.innerHTML = `
-                    <div class="bg-[#11233d] border border-[#e5a93b]/30 rounded-xl p-6 md:p-8 shadow-2xl text-center">
-                        <div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-400 text-xl mx-auto mb-3 border border-green-500/20">✓</div>
-                        <h3 class="text-base font-black text-white uppercase tracking-wide">Request Queued Successfully!</h3>
-                        <p class="text-xs text-gray-300 font-medium max-w-md mx-auto mt-2 leading-relaxed">
-                            Thank you for contacting <span class="text-[#e5a93b] font-bold">Hometouch Community Hub</span>. Your context block has dropped safely into our processing basket. You'll hear back from us in <span class="text-white font-bold">less than 24 hours</span>.
-                        </p>
-                        <div class="mt-4 p-3 bg-[#0d1e36]/60 border border-[#e5a93b]/10 rounded-lg text-left max-w-md mx-auto">
-                            <span class="text-[9px] font-bold text-[#e5a93b] uppercase tracking-widest block mb-1">Meanwhile...</span>
-                            <p class="text-[11px] text-gray-400 leading-normal">
-                                If you have an additional question, correction, or extra context, you can go ahead and submit another message block right below or wait for our agent's reach out.
-                            </p>
-                        </div>
-                        <div class="mt-5 pt-3 border-t border-[#e5a93b]/10">
-                            <p class="text-[9px] text-gray-400 font-semibold uppercase tracking-wider mb-2">Need immediate real-time response?</p>
-                            <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                                <a href="tel:+254726745563" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Peter</a>
-                                <a href="tel:+254704580886" class="bg-[#163056] border border-[#e5a93b]/10 hover:border-[#11233d] text-white font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Support</a>
-                            </div>
-                        </div>
-                        <button onclick="window.location.reload()" class="mt-4 text-[10px] text-gray-400 hover:text-[#e5a93b] underline transition cursor-pointer">Submit another entry</button>
-                    </div>`;
-            }).catch(() => {
-                container.innerHTML = `<div class="bg-[#11233d] border border-red-500/20 rounded-xl p-6 text-center text-xs text-red-400">Submission error. Please verify endpoints.</div>`;
-            });
-        }
-
-        // ==========================================
-        //         VAPI VOICE ASSISTANT SYSTEM
-        // ==========================================
-        let vapiInstance = null;
-        let isCallActive = false;
-
-        // Initialize Vapi Instance with Credentials
-        function initVapi() {
-            if (!vapiInstance) {
-                // Instantiates Vapi global client with Public Key
-                vapiInstance = new Vapi('5a617761-1775-4bee-8224-aae05aa32cfa');
-
-                // Toggle icon and states based on engine streaming signals
-                vapiInstance.on('call-start', () => {
-                    isCallActive = true;
-                    document.getElementById('vapi-icon-idle').classList.add('hidden');
-                    document.getElementById('vapi-icon-active').classList.remove('hidden');
-                    document.getElementById('vapi-widget-btn').classList.remove('bg-[#e5a93b]', 'hover:bg-[#cca325]');
-                    document.getElementById('vapi-widget-btn').classList.add('bg-white');
-                });
-
-                vapiInstance.on('call-end', () => {
-                    isCallActive = false;
-                    document.getElementById('vapi-icon-active').classList.add('hidden');
-                    document.getElementById('vapi-icon-idle').classList.remove('hidden');
-                    document.getElementById('vapi-widget-btn').classList.remove('bg-white');
-                    document.getElementById('vapi-widget-btn').classList.add('bg-[#e5a93b]', 'hover:bg-[#cca325]');
-                });
-
-                vapiInstance.on('error', (e) => {
-                    console.error('Vapi Web SDK Stream Interface Error:', e);
-                    isCallActive = false;
-                });
-            }
-        }
-
-        // Execution router to run or drop stream connections cleanly
         function toggleVapiCall() {
-            initVapi();
-            if (isCallActive) {
-                vapiInstance.stop();
+            if (vapi.isCallActive) {
+                vapi.stop();
             } else {
-                // Dispatches voice capture request thread to specified assistant instance ID
-                vapiInstance.start('5dc578e9-e1d5-4182-b2bc-ecb03f863b84');
+                vapi.start();
             }
         }
+
+        vapi.on('call-start', () => {
+            document.getElementById('vapi-icon-idle').classList.add('hidden');
+            document.getElementById('vapi-icon-active').classList.remove('hidden');
+        });
+
+        vapi.on('call-end', () => {
+            document.getElementById('vapi-icon-idle').classList.remove('hidden');
+            document.getElementById('vapi-icon-active').classList.add('hidden');
+        });
+
+        // --- TAB SWITCHING LOGIC ---
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0');
+            document.getElementById(tabId + '-tab').classList.add('active');
+            btn.className = 'tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0';
+        }
+
+        // --- EXISTING FUNCTIONS (Hostel/Price Calcs) ---
+        // (Paste your original fetchHostelCounts, updateQty, calculateTotals functions here)
     </script>
 </body>
 </html>
