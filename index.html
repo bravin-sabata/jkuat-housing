@@ -371,18 +371,18 @@
         </div>
     </section>
 
-    <div class="fixed bottom-6 right-6 z-50">
-       <button id="vapi-widget-btn" onclick="toggleVapiCall()" ontouchstart="toggleVapiCall()" class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
-            <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
-            <svg id="vapi-icon-idle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.433-5.147-3.756-6.58-6.58l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
-            </svg>
-            <svg id="vapi-icon-active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 hidden text-red-600">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-            </svg>
-            <span class="absolute right-16 bg-[#11233d] border border-[#e5a93b]/20 text-[#e5a93b] font-bold text-[10px] uppercase px-2 py-1 rounded tracking-wider shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">Ask Assistant</span>
-        </button>
-    </div>
+   <div class="fixed bottom-6 right-6 z-50">
+   <button id="vapi-widget-btn" 
+    onclick="toggleVapiCall()" 
+    class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
+        <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
+        
+        <svg id="vapi-icon-idle" ... >...</svg>
+        <svg id="vapi-icon-active" ... >...</svg>
+        
+        <span class="absolute right-16 ...">Ask Assistant</span>
+    </button>
+</div>
 
     <footer class="bg-[#071120] border-t border-[#e5a93b]/10 py-6 px-4 text-[9px] text-gray-500 mt-auto w-full">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
