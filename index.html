@@ -53,7 +53,7 @@
                     </p>
                     <div class="mt-6 flex flex-wrap justify-center gap-3">
                         <button onclick="switchTab('storage', document.getElementsByClassName('tab-btn')[1])" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider cursor-pointer">Explore Storage</button>
-                        <button onclick="toggleVapiCall()" class="bg-green-600 hover:bg-green-700 text-white font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider flex items-center gap-2 cursor-pointer">
+                        <button onclick="toggleVapiCall(event)" class="bg-green-600 hover:bg-green-700 text-white font-black text-xs px-5 py-2.5 rounded shadow-lg transition uppercase tracking-wider flex items-center gap-2 cursor-pointer">
                             <span class="relative flex h-2 w-2">
                                 <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
                                 <span class="relative inline-flex rounded-full h-2 w-2 bg-white"></span>
@@ -311,8 +311,7 @@
 
     <div class="fixed bottom-6 right-6 z-50">
        <button id="vapi-widget-btn" 
-        onclick="toggleVapiCall()" 
-        ontouchstart="toggleVapiCall()" 
+        onclick="toggleVapiCall(event)" 
         class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
             <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
             
@@ -478,6 +477,7 @@
 
                 vapiInstance.on('call-start', () => {
                     isCallActive = true;
+                    console.log("Vapi Call connected successfully!");
                     document.getElementById('vapi-icon-idle').classList.add('hidden');
                     document.getElementById('vapi-icon-active').classList.remove('hidden');
                     document.getElementById('vapi-widget-btn').classList.remove('bg-[#e5a93b]', 'hover:bg-[#cca325]');
@@ -486,6 +486,7 @@
 
                 vapiInstance.on('call-end', () => {
                     isCallActive = false;
+                    console.log("Vapi Call ended cleanly.");
                     document.getElementById('vapi-icon-active').classList.add('hidden');
                     document.getElementById('vapi-icon-idle').classList.remove('hidden');
                     document.getElementById('vapi-widget-btn').classList.remove('bg-white');
@@ -494,16 +495,26 @@
 
                 vapiInstance.on('error', (e) => {
                     console.error('Vapi Web SDK Stream Interface Error:', e);
+                    alert("Microphone access denied or error connecting to AI agent.");
                     isCallActive = false;
                 });
             }
         }
 
-        function toggleVapiCall() {
+        function toggleVapiCall(event) {
+            if (event) {
+                event.preventDefault();
+                event.stopPropagation();
+            }
+            
             initVapi();
+            
             if (isCallActive) {
                 vapiInstance.stop();
             } else {
+                console.log("Starting Vapi streams...");
+                // Visual feedback to show it's trying to connect
+                document.getElementById('vapi-icon-idle').classList.add('animate-pulse');
                 vapiInstance.start('5dc578e9-e1d5-4182-b2bc-ecb03f863b84');
             }
         }
