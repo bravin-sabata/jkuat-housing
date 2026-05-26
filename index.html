@@ -32,6 +32,7 @@
                 <button onclick="switchTab('laundry', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Laundry</button>
                 <button onclick="switchTab('accommodation', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Accommodation</button>
                 <button onclick="switchTab('marketplace', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0">Marketplace</button>
+                <button onclick="switchTab('host', this)" class="tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0 text-green-400 font-bold border-green-500/20">Become a Host</button>
             </nav>
         </div>
     </header>
@@ -261,6 +262,20 @@
                 <p class="text-[11px] text-gray-400 mt-1 leading-relaxed">Direct secure student asset trading module opens soon.</p>
             </div>
         </div>
+        
+        <div id="host-tab" class="tab-content">
+    <div class="max-w-xl mx-auto bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-6 shadow-xl mt-4">
+        <h3 class="text-sm font-bold text-white mb-2 uppercase tracking-wider">Become a Storage Host</h3>
+        <p class="text-xs text-gray-400 mb-4">Earn by offering your space. Register your details below.</p>
+        <form action="https://formspree.io/f/mykvnjpv" method="POST" class="space-y-3">
+            <input type="text" name="name" placeholder="Full Name" required class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white">
+            <input type="tel" name="phone" placeholder="Phone Number" required class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white">
+            <input type="text" name="location" placeholder="Exact House/Building Location" required class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white">
+            <textarea name="capacity" placeholder="Describe your available space/capacity" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white"></textarea>
+            <button type="submit" class="w-full bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-xs transition uppercase tracking-wider cursor-pointer">Submit Host Application</button>
+        </form>
+    </div>
+</div>
 
     </main>
 
