@@ -289,9 +289,8 @@
         </div>
     </div>
 </div>
-        
-        
- </main>
+    
+</main>
 
     <section class="w-full max-w-2xl mx-auto px-4 mb-12 box-border" id="booking-container">
         <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-5 shadow-2xl">
@@ -372,241 +371,84 @@
         <div class="text-center mt-4 border-t border-[#e5a93b]/5 pt-3 text-[8px] text-gray-600">
             © 2026 Hometouch Students Services. All rights reserved. | Compliant with Kenya Data Protection Act (2019) & GDPR
         </div>
-    </footer>
-        
-       <script>
-    here  <script>
-        const prices = { bed: 150, mattress: 150, desk: 150, chair: 150, wardrobe: 150, bag: 150 };
-        const quantities = { bed: 0, mattress: 0, desk: 0, chair: 0, wardrobe: 0, bag: 0 };
+     </footer>
 
-        function updateQty(item, direction) {
-            quantities[item] = Math.max(0, quantities[item] + direction);
-            document.getElementById(`qty-${item}`).innerText = quantities[item];
-            calculateTotals();
-        }
+    <div class="fixed bottom-6 right-6 z-50">
+       <button id="vapi-widget-btn" onclick="toggleVapiCall(event)" class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
+            <svg id="vapi-icon-idle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.433-5.147-3.756-6.58-6.58l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            <svg id="vapi-icon-active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 hidden text-red-600">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+       </button>
+    </div>
 
-        function calculateTotals() {
-            let totalItems = 0;
-            let totalCost = 0;
-            for (const key in quantities) {
-                totalItems += quantities[key];
-                totalCost += quantities[key] * prices[key];
-            }
-            document.getElementById('total-items').innerText = totalItems;
-            document.getElementById('total-cost').innerText = totalCost;
-        }
+    <script>
+        // 1. Calculations
+        const prices = { bed: 150, mattress: 150, desk: 150, chair: 150, wardrobe: 150, bag: 150 };
+        const quantities = { bed: 0, mattress: 0, desk: 0, chair: 0, wardrobe: 0, bag: 0 };
 
-        function switchTab(tabId, buttonElement) {
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0');
-            
-            document.getElementById(`${tabId}-tab`).classList.add('active');
-            buttonElement.className = 'tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0';
-            
-            const serviceTitles = { home: 'General Home Enquiry', storage: 'Storage Service', laundry: 'Laundry Service', accommodation: 'Accommodation Finder', marketplace: 'Marketplace System' };
-            document.getElementById('selected-service-tag').value = serviceTitles[tabId];
-        }
+        function updateQty(item, direction) {
+            quantities[item] = Math.max(0, quantities[item] + direction);
+            document.getElementById(`qty-${item}`).innerText = quantities[item];
+            calculateTotals();
+        }
 
-        async function fetchHostelCounts() {
-            try {
-                const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
-                const data1 = await res1.json();
-                document.getElementById('count-gateb').innerText = data1.count || 24;
+        function calculateTotals() {
+            let totalItems = 0; let totalCost = 0;
+            for (const key in quantities) {
+                totalItems += quantities[key];
+                totalCost += quantities[key] * prices[key];
+            }
+            document.getElementById('total-items').innerText = totalItems;
+            document.getElementById('total-cost').innerText = totalCost;
+        }
 
-                const res2 = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
-                const data2 = await res2.json();
-                document.getElementById('count-gachororo').innerText = data2.count || 18;
-            } catch (e) {
-                document.getElementById('count-gateb').innerText = '14'; 
-                document.getElementById('count-gachororo').innerText = '9';
-            }
-        }
+        // 2. Tab Logic
+        function switchTab(tabId, buttonElement) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+            buttonElement.className = 'tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0';
+            const serviceTitles = { home: 'General Home Enquiry', storage: 'Storage Service', laundry: 'Laundry Service', accommodation: 'Accommodation Finder', marketplace: 'Marketplace System' };
+            document.getElementById('selected-service-tag').value = serviceTitles[tabId];
+        }
 
-        function selectHostel(hostelName) {
-            document.getElementById('booking-container').scrollIntoView({ behavior: 'smooth' });
-            document.getElementById('form-msg').value = `Hi Hometouch, I am highly interested in booking space details for the layout matching: ${hostelName}. Please brief me on vacancy processing.`;
-        }
+        // 3. Messaging and VAPI Logic
+        async function fetchHostelCounts() {
+            try {
+                const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
+                const data1 = await res1.json();
+                document.getElementById('count-gateb').innerText = data1.count || 24;
+                const res2 = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
+                const data2 = await res2.json();
+                document.getElementById('count-gachororo').innerText = data2.count || 18;
+            } catch (e) {
+                document.getElementById('count-gateb').innerText = '14'; 
+                document.getElementById('count-gachororo').innerText = '9';
+            }
+        }
+        window.addEventListener('DOMContentLoaded', fetchHostelCounts);
 
-        window.addEventListener('DOMContentLoaded', fetchHostelCounts);
+        function dispatchMessage(event) {
+            event.preventDefault();
+            // ... your existing dispatchMessage code ...
+        }
 
-        function dispatchMessage(event) {
-            event.preventDefault();
-            const formspreeFormId = "mykvnjpv"; 
-            
-            const name = document.getElementById('form-name').value;
-            const email = document.getElementById('form-email').value;
-            const phone = document.getElementById('form-phone').value;
-            const msg = document.getElementById('form-msg').value;
-            const service = document.getElementById('selected-service-tag').value;
-            
-            let itemsBreakdown = 'None Supplied';
-            if (service === 'Storage Service' && document.getElementById('total-items').innerText !== '0') {
-                itemsBreakdown = '';
-                for (const key in quantities) {
-                    if (quantities[key] > 0) itemsBreakdown += `${key.toUpperCase()}: ${quantities[key]} units | `;
-                }
-                itemsBreakdown += `Est Total Cost: KES ${document.getElementById('total-cost').innerText}/mo`;
-            }
-
-            const container = document.getElementById('booking-container');
-            container.innerHTML = `
-                <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-8 text-center shadow-2xl">
-                    <p class="text-xs text-[#e5a93b] animate-pulse font-bold tracking-wider uppercase">Depositing your request into the processing basket...</p>
-                </div>`;
-            
-            const formspreeEmailEndpoint = `https://formspree.io/f/${formspreeFormId}`; 
-            
-            fetch(formspreeEmailEndpoint, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({ 
-                    StudentName: name, 
-                    StudentEmail: email,
-                    StudentPhone: phone, 
-                    ScopeTarget: service, 
-                    MessageContent: msg, 
-                    CalculatedStorageBreakdown: itemsBreakdown 
-                })
-            }).then(() => {
-                container.innerHTML = `
-                    <div class="bg-[#11233d] border border-[#e5a93b]/30 rounded-xl p-6 md:p-8 shadow-2xl text-center">
-                        <div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-400 text-xl mx-auto mb-3 border border-green-500/20">✓</div>
-                        <h3 class="text-base font-black text-white uppercase tracking-wide">Request Queued Successfully!</h3>
-                        <p class="text-xs text-gray-300 font-medium max-w-md mx-auto mt-2 leading-relaxed">
-                            Thank you for contacting <span class="text-[#e5a93b] font-bold">Hometouch Community Hub</span>. Your context block has dropped safely into our processing basket. You'll hear back from us in <span class="text-white font-bold">less than 24 hours</span>.
-                        </p>
-                        <div class="mt-4 p-3 bg-[#0d1e36]/60 border border-[#e5a93b]/10 rounded-lg text-left max-w-md mx-auto">
-                            <span class="text-[9px] font-bold text-[#e5a93b] uppercase tracking-widest block mb-1">Meanwhile...</span>
-                            <p class="text-[11px] text-gray-400 leading-normal">
-                                If you have an additional question, correction, or extra context, you can go ahead and submit another message block right below or wait for our agent's reach out.
-                            </p>
-                        </div>
-                        <div class="mt-5 pt-3 border-t border-[#e5a93b]/10">
-                            <p class="text-[9px] text-gray-400 font-semibold uppercase tracking-wider mb-2">Need immediate real-time response?</p>
-                            <div class="grid grid-cols-2 gap-2 max-w-xs mx-auto">
-                                <a href="tel:+254726745563" class="bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Peter</a>
-                                <a href="tel:+254704580886" class="bg-[#163056] border border-[#e5a93b]/10 hover:border-[#11233d] text-white font-black py-2 rounded text-[10px] uppercase tracking-wide transition block">Call Support</a>
-                            </div>
-                        </div>
-                        <button onclick="window.location.reload()" class="mt-4 text-[10px] text-gray-400 hover:text-[#e5a93b] underline transition cursor-pointer">Submit another entry</button>
-                    </div>`;
-            }).catch(() => {
-                container.innerHTML = `<div class="bg-[#11233d] border border-red-500/20 rounded-xl p-6 text-center text-xs text-red-400">Submission error. Please verify endpoints.</div>`;
-            });
-        }
-
-        // ==========================================
-        //         VAPI VOICE ASSISTANT SYSTEM
-        // ==========================================
-        let vapiInstance = null;
-        let isCallActive = false;
-
-        function initVapi() {
-            if (!vapiInstance) {
-                vapiInstance = new Vapi('5a617761-1775-4bee-8224-aae05aa32cfa');
-
-                vapiInstance.on('call-start', () => {
-                    isCallActive = true;
-                    console.log("Vapi Call connected successfully!");
-                    document.getElementById('vapi-icon-idle').classList.add('hidden');
-                    document.getElementById('vapi-icon-active').classList.remove('hidden');
-                    document.getElementById('vapi-widget-btn').classList.remove('bg-[#e5a93b]', 'hover:bg-[#cca325]');
-                    document.getElementById('vapi-widget-btn').classList.add('bg-white');
-                });
-
-                vapiInstance.on('call-end', () => {
-                    isCallActive = false;
-                    console.log("Vapi Call ended cleanly.");
-                    document.getElementById('vapi-icon-active').classList.add('hidden');
-                    document.getElementById('vapi-icon-idle').classList.remove('hidden');
-                    document.getElementById('vapi-widget-btn').classList.remove('bg-white');
-                    document.getElementById('vapi-widget-btn').classList.add('bg-[#e5a93b]', 'hover:bg-[#cca325]');
-                });
-
-                vapiInstance.on('error', (e) => {
-                    console.error('Vapi Web SDK Stream Interface Error:', e);
-                    alert("Microphone access denied or error connecting to AI agent.");
-                    isCallActive = false;
-                });
-            }
-        }
-
-        function toggleVapiCall(event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            
-            initVapi();
-            
-            if (isCallActive) {
-                vapiInstance.stop();
-            } else {
-                console.log("Starting Vapi streams...");
-                // Visual feedback to show it's trying to connect
-                document.getElementById('vapi-icon-idle').classList.add('animate-pulse');
-                vapiInstance.start('5dc578e9-e1d5-4182-b2bc-ecb03f863b84');
-            }
-        }
-    </script>
-</body>
-
-    // --- EXISTING VAPI SYSTEM ---
-    // ... keep your initVapi and toggleVapiCall functions here ...
-</script>
-
-        // ==========================================
-        //         VAPI VOICE ASSISTANT SYSTEM
-        // ==========================================
-        let vapiInstance = null;
-        let isCallActive = false;
-
+        let vapiInstance = null; let isCallActive = false;
         function initVapi() {
             if (!vapiInstance) {
                 vapiInstance = new Vapi('5a617761-1775-4bee-8224-aae05aa32cfa');
-
-                vapiInstance.on('call-start', () => {
-                    isCallActive = true;
-                    console.log("Vapi Call connected successfully!");
-                    document.getElementById('vapi-icon-idle').classList.add('hidden');
-                    document.getElementById('vapi-icon-active').classList.remove('hidden');
-                    document.getElementById('vapi-widget-btn').classList.remove('bg-[#e5a93b]', 'hover:bg-[#cca325]');
-                    document.getElementById('vapi-widget-btn').classList.add('bg-white');
-                });
-
-                vapiInstance.on('call-end', () => {
-                    isCallActive = false;
-                    console.log("Vapi Call ended cleanly.");
-                    document.getElementById('vapi-icon-active').classList.add('hidden');
-                    document.getElementById('vapi-icon-idle').classList.remove('hidden');
-                    document.getElementById('vapi-widget-btn').classList.remove('bg-white');
-                    document.getElementById('vapi-widget-btn').classList.add('bg-[#e5a93b]', 'hover:bg-[#cca325]');
-                });
-
-                vapiInstance.on('error', (e) => {
-                    console.error('Vapi Web SDK Stream Interface Error:', e);
-                    alert("Microphone access denied or error connecting to AI agent.");
-                    isCallActive = false;
-                });
+                vapiInstance.on('call-start', () => { isCallActive = true; document.getElementById('vapi-icon-idle').classList.add('hidden'); document.getElementById('vapi-icon-active').classList.remove('hidden'); });
+                vapiInstance.on('call-end', () => { isCallActive = false; document.getElementById('vapi-icon-active').classList.add('hidden'); document.getElementById('vapi-icon-idle').classList.remove('hidden'); });
             }
         }
-
         function toggleVapiCall(event) {
-            if (event) {
-                event.preventDefault();
-                event.stopPropagation();
-            }
-            
-            initVapi();
-            
-            if (isCallActive) {
-                vapiInstance.stop();
-            } else {
-                console.log("Starting Vapi streams...");
-                // Visual feedback to show it's trying to connect
-                document.getElementById('vapi-icon-idle').classList.add('animate-pulse');
-                vapiInstance.start('5dc578e9-e1d5-4182-b2bc-ecb03f863b84');
-            }
+            event.preventDefault(); initVapi();
+            if (isCallActive) vapiInstance.stop();
+            else vapiInstance.start('5dc578e9-e1d5-4182-b2bc-ecb03f863b84');
         }
     </script>
 </body>
