@@ -3,23 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Community Hub - JKUAT Estate Watch</title>
+    <title>JKUAT Community Hub - JKUAT Estate Watch</title>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <script src="https://cdn.jsdelivr.net/npm/@vapi-ai/web@3/dist/vapi.js"></script>
     <style>
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #071120; }
-        ::-webkit-scrollbar-thumb { background: #e5a93b; border-radius: 3px; }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
-        html, body {
-            overflow-x: hidden;
-            width: 100%;
-            position: relative;
-            background-color: #0d1e36;
-        }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .fixed { position: fixed; z-index: 9999; }
     </style>
 </head>
+
+<body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden relative">
+
+    <header class="bg-[#0d1e36]/95 backdrop-blur-md border-b border-[#e5a93b]/20 sticky top-0 z-50 w-full">
+        </header>
+
+    <main class="w-full max-w-6xl mx-auto px-4 py-6 flex-grow box-border">
+        </main>
+
+    <script>
+        // ... your existing JS functions ...
+        async function fetchHostelCounts() {
+            try {
+                const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
+                const data1 = await res1.json();
+                document.getElementById('count-gateb').innerText = data1.count || 24;
+
+                const res2 = await fetch('https://api.counterapi.dev/v1/jkuathub/gachororo');
+                const data2 = await res2.json();
+                document.getElementById('count-gachororo').innerText = data2.count || 18;
+            } catch (err) {
+                console.error("Error fetching counts:", err);
+            }
+        }
+        fetchHostelCounts();
+    </script>
+</body>
+</html>
 <body class="bg-[#0d1e36] text-gray-200 flex flex-col min-h-screen font-sans antialiased w-full max-w-full overflow-x-hidden relative">
 
     <header class="bg-[#0d1e36]/95 backdrop-blur-md border-b border-[#e5a93b]/20 sticky top-0 z-50 w-full">
@@ -316,7 +337,10 @@
     </section>
 
     <div class="fixed bottom-6 right-6 z-50">
-        <button id="vapi-widget-btn" onclick="toggleVapiCall()" class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
+       <button id="vapi-widget-btn" 
+        onclick="toggleVapiCall()" 
+        ontouchstart="toggleVapiCall()" 
+        class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
             <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
             
             <svg id="vapi-icon-idle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
