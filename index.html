@@ -265,6 +265,7 @@
 
         <div id="host-tab" class="tab-content">
             <div id="host-form-container" class="max-w-4xl mx-auto p-4 grid grid-cols-1 md:grid-cols-3 gap-6">
+                
                 <div class="md:col-span-2 space-y-6">
                     <div class="text-center md:text-left flex flex-col md:flex-row items-center gap-4 bg-[#11233d]/40 p-5 rounded-xl border border-[#e5a93b]/10">
                         <img src="https://i.postimg.cc/gkM7vqB3/JKUAT-HUB-Logo.jpg" alt="Hometouch Logo" class="w-20 h-20 rounded-full border-2 border-[#e5a93b]/30 p-1 bg-[#0d1e36] shrink-0">
@@ -277,13 +278,14 @@
                     <div class="bg-[#11233d] border border-[#e5a93b]/10 rounded-xl p-6 shadow-xl">
                         <h3 class="text-xs font-bold text-[#e5a93b] uppercase tracking-wider mb-4">Host Onboarding Form</h3>
                         <form id="host-application-form" class="space-y-3">
+                            <input type="hidden" name="ApplicationType" value="New Storage Host Application">
                             <div>
                                 <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Your Full Name *</label>
                                 <input type="text" name="name" required placeholder="e.g. Bravin Sabata" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
                             </div>
                             <div>
                                 <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Phone Number (M-Pesa Connected) *</label>
-                                <input type="tel" name="phone" required placeholder="e.g. 07xxxxxxxx" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
+                                <input type="tel" name="phone" required placeholder="e.g. 0795104088" class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]">
                             </div>
                             <div>
                                 <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Exact House/Building Location *</label>
@@ -291,7 +293,7 @@
                             </div>
                             <div>
                                 <label class="block text-[9px] font-bold text-gray-400 uppercase tracking-wider mb-1">Describe Space Capacity & Conditions *</label>
-                                <textarea name="capacity" rows="3" required placeholder="e.g. I have a large empty wardrobe box and under-bed space. Can host 5 people items cleanly. Ground floor room, highly secure with double locks." class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]"></textarea>
+                                <textarea name="capacity" rows="3" required placeholder="e.g. I have a large empty room. Can host 5 people items cleanly like bags and mattresses safely." class="w-full bg-[#0d1e36]/50 border border-[#e5a93b]/10 rounded px-2.5 py-1.5 text-xs text-white focus:outline-hidden focus:border-[#e5a93b]"></textarea>
                             </div>
                             <button type="submit" class="w-full bg-[#e5a93b] hover:bg-[#cca325] text-[#0d1e36] font-black py-2 rounded text-xs transition uppercase tracking-wider cursor-pointer mt-2">Submit Host Application</button>
                         </form>
@@ -371,18 +373,18 @@
         </div>
     </section>
 
-   <div class="fixed bottom-6 right-6 z-50">
-   <button id="vapi-widget-btn" 
-    onclick="toggleVapiCall()" 
-    class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
-        <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
-        
-        <svg id="vapi-icon-idle" ... >...</svg>
-        <svg id="vapi-icon-active" ... >...</svg>
-        
-        <span class="absolute right-16 ...">Ask Assistant</span>
-    </button>
-</div>
+    <div class="fixed bottom-6 right-6 z-50">
+       <button id="vapi-widget-btn" onclick="toggleVapiCall()" ontouchstart="toggleVapiCall()" class="bg-[#e5a93b] text-[#0d1e36] p-4 rounded-full shadow-2xl hover:bg-[#cca325] transition duration-300 relative group flex items-center justify-center border border-[#e5a93b]/30 cursor-pointer">
+            <span class="absolute inline-flex h-full w-full rounded-full bg-[#e5a93b]/40 animate-ping opacity-75"></span>
+            <svg id="vapi-icon-idle" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.433-5.147-3.756-6.58-6.58l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+            </svg>
+            <svg id="vapi-icon-active" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6 hidden text-red-600">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+            </svg>
+            <span class="absolute right-16 bg-[#11233d] border border-[#e5a93b]/20 text-[#e5a93b] font-bold text-[10px] uppercase px-2 py-1 rounded tracking-wider shadow opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none">Ask Assistant</span>
+        </button>
+    </div>
 
     <footer class="bg-[#071120] border-t border-[#e5a93b]/10 py-6 px-4 text-[9px] text-gray-500 mt-auto w-full">
         <div class="max-w-6xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-center sm:text-left">
@@ -403,30 +405,24 @@
     </footer>
 
     <script>
-        // 1. Initial State Definitions
         const prices = { bed: 150, mattress: 150, desk: 150, chair: 150, wardrobe: 150, bag: 150 };
         const quantities = { bed: 0, mattress: 0, desk: 0, chair: 0, wardrobe: 0, bag: 0 };
 
-        // 2. Tab Navigation System Fix
+        // Tab Navigation Router Logic
         function switchTab(tabId, buttonElement) {
-            // Hide all components securely
             document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            // Standardize navbar buttons layout styling
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.className = 'tab-btn px-2.5 py-1.5 hover:text-white transition whitespace-nowrap shrink-0';
             });
             
-            // Map structural views matching selector IDs
             const targetContent = document.getElementById(`${tabId}-tab`);
             if (targetContent) {
                 targetContent.classList.add('active');
             }
             
-            // Apply highlight styles cleanly onto active element
             if (buttonElement) {
                 buttonElement.className = 'tab-btn px-2.5 py-1.5 text-white bg-[#e5a93b]/15 rounded-md border-b-2 border-[#e5a93b] whitespace-nowrap shrink-0';
             } else {
-                // Fail-safe if triggered outside navbar triggers
                 const buttons = document.getElementsByClassName('tab-btn');
                 const indices = { home: 0, storage: 1, laundry: 2, accommodation: 3, marketplace: 4, host: 5 };
                 if (buttons[indices[tabId]]) {
@@ -440,7 +436,6 @@
             }
         }
 
-        // 3. Calculator Framework Utility Logic
         function updateQty(item, direction) {
             quantities[item] = Math.max(0, quantities[item] + direction);
             document.getElementById(`qty-${item}`).innerText = quantities[item];
@@ -458,7 +453,7 @@
             document.getElementById('total-cost').innerText = totalCost;
         }
 
-        // 4. API Realtime Dashboard Synchronization Counters
+        // Live Cloud CounterAPI Analytics Loop
         async function fetchHostelCounts() {
             try {
                 const res1 = await fetch('https://api.counterapi.dev/v1/jkuathub/gateb');
@@ -479,7 +474,7 @@
             document.getElementById('form-msg').value = `Hi Hometouch, I am highly interested in booking space details for the layout matching: ${hostelName}.\nPlease brief me on vacancy processing.`;
         }
 
-        // 5. On-Site Intercept Form Processing (Inquiries)
+        // Inquiries Form Submission Intercept Handler
         function dispatchMessage(event) {
             event.preventDefault();
             const formspreeFormId = "mykvnjpv";
@@ -514,12 +509,8 @@
                         <div class="w-12 h-12 bg-green-500/10 rounded-full flex items-center justify-center text-green-400 text-xl mx-auto mb-3 border border-green-500/20">✓</div>
                         <h3 class="text-base font-black text-white uppercase tracking-wide">Request Queued Successfully!</h3>
                         <p class="text-xs text-gray-300 font-medium max-w-md mx-auto mt-2 leading-relaxed">
-                            Thank you for contacting <span class="text-[#e5a93b] font-bold">Hometouch Community Hub</span>. Your context block has dropped safely into our processing basket. You'll hear back from us in <span class="text-white font-bold">less than 24 hours</span>.
+                            Thank you for contacting <span class="text-[#e5a93b] font-bold">Hometouch Community Hub</span>. Your message block has dropped safely into our processing basket. You'll hear back from us in <span class="text-white font-bold">less than 24 hours</span>.
                         </p>
-                        <div class="mt-4 p-3 bg-[#0d1e36]/60 border border-[#e5a93b]/10 rounded-lg text-left max-w-md mx-auto">
-                            <span class="text-[9px] font-bold text-[#e5a93b] uppercase tracking-widest block mb-1">Meanwhile...</span>
-                            <p class="text-[11px] text-gray-400 leading-normal">If you have an additional question, correction, or extra context, you can submit another message block right below.</p>
-                        </div>
                         <button onclick="window.location.reload()" class="mt-4 text-[10px] text-gray-400 hover:text-[#e5a93b] underline transition cursor-pointer">Submit another entry</button>
                     </div>`;
             }).catch(() => {
@@ -527,7 +518,7 @@
             });
         }
 
-        // 6. Asynchronous Formspree Submission Intercept (Become a Host Form)
+        // On-Site Intercept Processing for Host Application Form
         document.addEventListener('DOMContentLoaded', function() {
             fetchHostelCounts();
             
@@ -577,7 +568,7 @@
             }
         });
 
-        // 7. VAPI AI Voice Agent Architecture Parameters
+        // Vapi AI Voice Agent Settings
         let vapiInstance = null;
         let isCallActive = false;
 
@@ -599,7 +590,7 @@
                     document.getElementById('vapi-widget-btn').classList.add('bg-[#e5a93b]', 'hover:bg-[#cca325]');
                 });
                 vapiInstance.on('error', (e) => {
-                    console.error('Vapi Web SDK Stream Interface Error:', e);
+                    console.error('Vapi Web SDK Error:', e);
                     isCallActive = false;
                 });
             }
